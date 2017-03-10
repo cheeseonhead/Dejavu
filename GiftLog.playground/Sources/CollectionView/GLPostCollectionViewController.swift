@@ -22,7 +22,7 @@ class GLPostCollectionViewController: UICollectionViewController, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width - 20, height: 100)
+        return CGSize(width: collectionView.bounds.width - 20, height: 80)
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -35,10 +35,8 @@ class GLPostCollectionViewController: UICollectionViewController, UICollectionVi
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        
-        print("Creating cell")
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostCell", for: indexPath)
-        print("Cell: \(cell)")
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostCell", for: indexPath) as! GLPostCollectionViewCell
+        cell.set(image: UIImage(named: "winter-solstice.jpg")!)
         return cell
     }
 }
