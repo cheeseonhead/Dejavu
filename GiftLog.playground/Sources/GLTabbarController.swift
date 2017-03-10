@@ -11,7 +11,8 @@ public class GLTabBarController: UITabBarController
         setTintColor(color: #colorLiteral(red: 0.2099874318, green: 0.3203630447, blue: 0.3499233723, alpha: 1))
         
         let vc1 = GLPostsNavigationController.init(nibName: nil, bundle: nil)
-        self.viewControllers = [vc1]
+        let vc2 = MapViewNavigationController.init(nibName: nil, bundle: nil)
+        self.viewControllers = [vc1, vc2]
     }
     
     public func setBackColor(color: UIColor)
