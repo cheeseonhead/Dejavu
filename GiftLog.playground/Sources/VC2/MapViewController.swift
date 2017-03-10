@@ -34,7 +34,7 @@ class MapViewController: UIViewController
         
         let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
         
-        let toronto = CLLocationCoordinate2D(latitude: 43.6532, longitude: -79.3832)
+        let toronto = CLLocationCoordinate2D(latitude: 37.329907, longitude: -122.026606)
         
         let region = MKCoordinateRegionMake(toronto, span)
         
