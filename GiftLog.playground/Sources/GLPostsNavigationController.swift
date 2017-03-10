@@ -6,6 +6,8 @@ class GLPostsNavigationController: UINavigationController
     {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
+        self.pushViewController(GLPostCollectionViewController(), animated: false)
+        
         let image = UIImage(imageLiteralResourceName: "SavingBook.png")
         self.tabBarItem = UITabBarItem(title: "Dejavus", image:image, selectedImage: nil)
         
