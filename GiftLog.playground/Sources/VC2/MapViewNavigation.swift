@@ -10,6 +10,9 @@ class MapViewNavigationController: UINavigationController
         
         let image = UIImage(imageLiteralResourceName: "Marker.png")
         tabBarItem = UITabBarItem(title: "Map", image:image, selectedImage: nil)
+        
+        navigationBar.barStyle = .blackOpaque
+        navigationBar.barTintColor = #colorLiteral(red: 0.4588235294, green: 0.3960784314, blue: 0.5254901961, alpha: 1)
     }
     
     required init?(coder aDecoder: NSCoder) {
