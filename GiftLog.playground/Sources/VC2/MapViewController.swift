@@ -21,6 +21,7 @@ class MapViewController: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.green
+        self.navigationItem.title = "Map"
         
         view.addSubview(mapView)
         mapView.frame = view.bounds
