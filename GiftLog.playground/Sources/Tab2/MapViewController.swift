@@ -35,8 +35,27 @@ class MapViewController: UIViewController, MKMapViewDelegate
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
     {
-        let postAnnotationView = PostAnnotationView(annotation: annotation, reuseIdentifier: "Post")
-        postAnnotationView.canShowCallout = true
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
+        let identifier = "PostAnnotation"
+        
+        var postAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        if postAnnotationView == nil {
+            postAnnotationView = PostAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            postAnnotationView?.canShowCallout = true
+        } else {
+            postAnnotationView!.annotation = annotation
+        }
+        
+        
+        let image = RoundImageView()
+        image.set(position: CGPoint(x: 0, y: 0), edgeLength: 50)
+        
+        image.backgroundColor = UIColor.brown
+        postAnnotationView!.leftCalloutAccessoryView = image
+        
         return postAnnotationView
     }
 }
