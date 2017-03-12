@@ -2,12 +2,13 @@ import UIKit
 import MapKit
 
 
-class MapViewController: UIViewController
+class MapViewController: UIViewController, MKMapViewDelegate
 {
     var initialSetup = true
     
     var mapView: MKMapView = {
-        return MKMapView()
+        let mapV = MKMapView()
+        return mapV
     }()
     
     override func viewDidLoad() {
@@ -15,6 +16,7 @@ class MapViewController: UIViewController
         self.view.backgroundColor = UIColor.green
         self.navigationItem.title = TitleConstant.mapVC.rawValue
         
+        mapView.delegate = self
         view.addSubview(mapView)
         addAnnotations(from: DummyData.existingPosts)
     }
@@ -29,6 +31,13 @@ class MapViewController: UIViewController
             setupMapView()
             initialSetup = false
         }
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
+    {
+        let postAnnotationView = PostAnnotationView(annotation: annotation, reuseIdentifier: "Post")
+        postAnnotationView.canShowCallout = true
+        return postAnnotationView
     }
 }
 
