@@ -4,6 +4,8 @@ import MapKit
 
 class MapViewController: UIViewController
 {
+    var initialSetup = true
+    
     var mapView: MKMapView = {
         return MKMapView()
     }()
@@ -23,18 +25,24 @@ class MapViewController: UIViewController
         
         mapView.frame = view.bounds
         
-        let latDelta = 0.0117
-        
-        let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
-        
-        let center = Coordinates.ApplePark
-        
-        centerMap(at: center, withSpan: span)
+        if(initialSetup) {
+            setupMapView()
+            initialSetup = false
+        }
     }
 }
 
 fileprivate extension MapViewController
 {
+    func setupMapView()
+    {
+        let latDelta = 0.0117
+        let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
+        let center = Coordinates.ApplePark
+        
+        centerMap(at: center, withSpan: span)
+    }
+    
     func centerMap(at center:CLLocationCoordinate2D, withSpan span:MKCoordinateSpan)
     {
         let region = MKCoordinateRegionMake(center, span)
