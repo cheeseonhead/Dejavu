@@ -12,8 +12,11 @@ class PostAnnotationView: MKPinAnnotationView
     {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         
-        leftCalloutAccessoryView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 25))
-        leftCalloutAccessoryView?.backgroundColor = UIColor.brown
+        let image = RoundImageView()
+        leftCalloutAccessoryView = image
+        
+        image.set(position: CGPoint(x: 0, y: 0), edgeLength: 100)
+        image.backgroundColor = UIColor.brown
         
         print(self)
     }

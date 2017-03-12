@@ -49,13 +49,6 @@ class MapViewController: UIViewController, MKMapViewDelegate
             postAnnotationView!.annotation = annotation
         }
         
-        
-        let image = RoundImageView()
-        image.set(position: CGPoint(x: 0, y: 0), edgeLength: 50)
-        
-        image.backgroundColor = UIColor.brown
-        postAnnotationView!.leftCalloutAccessoryView = image
-        
         return postAnnotationView
     }
 }
