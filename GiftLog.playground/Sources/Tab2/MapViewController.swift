@@ -24,6 +24,15 @@ class MapViewController: UIViewController
         self.navigationItem.title = TitleConstant.mapVC.rawValue
         
         view.addSubview(mapView)
+    }
+    
+    override func viewDidLayoutSubviews()
+    {
+        super.viewDidLayoutSubviews()
+        
+        print(view.superview)
+        print(view)
+        
         mapView.frame = view.bounds
         
         let topLeft = CLLocationCoordinate2D(latitude: 34.4311, longitude: -118.6012)
@@ -35,7 +44,7 @@ class MapViewController: UIViewController
         
         let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
         
-        let toronto = CLLocationCoordinate2D(latitude: 37.329907, longitude: -122.026606)
+        let toronto = CLLocationCoordinate2D(latitude: 37.331863, longitude: -122.029524)
         
         let region = MKCoordinateRegionMake(toronto, span)
         
