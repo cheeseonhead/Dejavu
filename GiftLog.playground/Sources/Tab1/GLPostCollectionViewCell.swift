@@ -27,8 +27,7 @@ class GLPostCollectionViewCell: UICollectionViewCell
         super.layoutSubviews()
         
         let bigHeight = frame.size.height
-        imageView.frame = CGRect(x: 0, y: 0, width: bigHeight, height: bigHeight)
-        imageView.layer.cornerRadius = bigHeight/2
+        imageView.set(position: CGPoint(x: 0, y:0), edgeLength: bigHeight)
         
         backView.anchorLeftInCenter(withLeftPadding: bigHeight/2, height: bigHeight - 20, rightPadding: 10)
     }
