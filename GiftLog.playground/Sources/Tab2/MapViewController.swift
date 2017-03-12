@@ -14,7 +14,7 @@ class MapViewController: UIViewController
         self.navigationItem.title = TitleConstant.mapVC.rawValue
         
         view.addSubview(mapView)
-        addAnnotations(from: [])
+        addAnnotations(from: DummyData.existingPosts)
     }
     
     override func viewDidLayoutSubviews()
