@@ -6,3 +6,4 @@ import PlaygroundSupport
 let tabBarController = GLTabBarController()
 
 PlaygroundPage.current.liveView = tabBarController
+print(tabBarController.view)

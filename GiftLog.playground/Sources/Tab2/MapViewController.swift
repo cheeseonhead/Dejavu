@@ -8,46 +8,46 @@ class MapViewController: UIViewController
         return MKMapView()
     }()
     
-    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-    {
-        print("view controller")
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.green
         self.navigationItem.title = TitleConstant.mapVC.rawValue
         
         view.addSubview(mapView)
+        addAnnotations(from: [])
     }
     
     override func viewDidLayoutSubviews()
     {
         super.viewDidLayoutSubviews()
         
-        print(view.superview)
-        print(view)
-        
         mapView.frame = view.bounds
         
-        let topLeft = CLLocationCoordinate2D(latitude: 34.4311, longitude: -118.6012)
-        let topRight = CLLocationCoordinate2D(latitude: 34.4311, longitude: -118.5912)
-        let bottomLeft = CLLocationCoordinate2D(latitude: 34.4194, longitude: -118.6012)
-        let bottomRight = CLLocationCoordinate2D(latitude: 34.4194, longitude: -118.5912)
-        
-        let latDelta = topLeft.latitude - bottomRight.latitude
+        let latDelta = 0.0117
         
         let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
         
-        let toronto = CLLocationCoordinate2D(latitude: 37.331863, longitude: -122.029524)
+        let center = Coordinates.ApplePark
         
-        let region = MKCoordinateRegionMake(toronto, span)
+        centerMap(at: center, withSpan: span)
+    }
+}
+
+fileprivate extension MapViewController
+{
+    func centerMap(at center:CLLocationCoordinate2D, withSpan span:MKCoordinateSpan)
+    {
+        let region = MKCoordinateRegionMake(center, span)
         
         mapView.region = region
+    }
+    
+    func addAnnotations(from posts: [Post])
+    {
+        for post in posts {
+            let annotation = PostAnnotation.init(coordinate: post.location, title: post.title, subtitle: post.description)
+            
+            mapView.addAnnotation(annotation)
+        }
     }
 }

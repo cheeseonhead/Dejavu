@@ -1,7 +1,7 @@
 import UIKit
 import MapKit
 
-class AttractionAnnotationView: MKAnnotationView
+class PostAnnotationView: MKAnnotationView
 {
     required init?(coder aDecoder: NSCoder)
     {
