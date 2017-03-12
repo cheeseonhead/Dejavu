@@ -64,7 +64,7 @@ fileprivate extension MapViewController
 {
     func setupMapView()
     {
-        let latDelta = 0.0117
+        let latDelta = 0.0045
         let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
         let center = Coordinates.ApplePark
         
