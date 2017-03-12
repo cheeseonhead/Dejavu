@@ -32,7 +32,7 @@ class GLPostCollectionViewController: UICollectionViewController, UICollectionVi
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostCell", for: indexPath) as! GLPostCollectionViewCell
-        cell.imageView.image = UIImage(named: "winter-solstice.jpg")!
+        cell.imageView.image = UIImage(named: ImageName.winter.rawValue)!
         return cell
     }
 }

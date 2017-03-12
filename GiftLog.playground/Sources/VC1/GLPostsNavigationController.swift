@@ -8,7 +8,7 @@ class GLPostsNavigationController: UINavigationController
         
         self.pushViewController(GLPostCollectionViewController(), animated: false)
         
-        let image = UIImage(imageLiteralResourceName: "SavingBook.png")
+        let image = UIImage(imageLiteralResourceName: ImageName.savingBook.rawValue)
         self.tabBarItem = UITabBarItem(title: TitleConstant.postListVC.rawValue, image:image, selectedImage: nil)
         
         self.navigationBar.barStyle = .blackOpaque

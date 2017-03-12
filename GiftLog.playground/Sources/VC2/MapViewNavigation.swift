@@ -8,7 +8,7 @@ class MapViewNavigationController: UINavigationController
         print("nav controller")
         pushViewController(MapViewController.init(nibName: nil, bundle: nil), animated: false)
         
-        let image = UIImage(imageLiteralResourceName: "Marker.png")
+        let image = UIImage(imageLiteralResourceName: ImageName.marker.rawValue)
         tabBarItem = UITabBarItem(title: TitleConstant.mapVC.rawValue, image:image, selectedImage: nil)
         
         navigationBar.barStyle = .blackOpaque
