@@ -1,7 +1,7 @@
 import UIKit
 import MapKit
 
-class PostAnnotationView: MKAnnotationView
+class PostAnnotationView: MKPinAnnotationView
 {
     required init?(coder aDecoder: NSCoder)
     {
@@ -12,8 +12,8 @@ class PostAnnotationView: MKAnnotationView
     {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         
-        backgroundColor = UIColor.blue
-        frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        leftCalloutAccessoryView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 25))
+        leftCalloutAccessoryView?.backgroundColor = UIColor.brown
         
         print(self)
     }
