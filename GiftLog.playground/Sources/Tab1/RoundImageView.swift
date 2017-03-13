@@ -5,6 +5,7 @@ class RoundImageView: UIImageView
     required init()
     {
         super.init(frame: CGRect.zero)
+        contentMode = .scaleAspectFill
         layer.borderWidth = 0
         layer.masksToBounds = false
         layer.borderColor = UIColor.black.cgColor
