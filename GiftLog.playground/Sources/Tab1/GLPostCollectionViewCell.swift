@@ -10,13 +10,16 @@ class GLPostCollectionViewCell: UICollectionViewCell
         return view
     }()
     
+    var titleLabel: UILabel = UILabel()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-//        self.backgroundColor = UIColor.red
-        
         addSubview(backView)
         addSubview(imageView)
+        
+        titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        backView.addSubview(titleLabel)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,5 +33,8 @@ class GLPostCollectionViewCell: UICollectionViewCell
         imageView.set(position: CGPoint(x: 0, y:0), edgeLength: bigHeight)
         
         backView.anchorLeftInCenter(withLeftPadding: bigHeight/2, height: bigHeight - 20, rightPadding: 10)
+        
+        titleLabel.sizeToFit()
+        titleLabel.anchorLeftInTop(withLeftPadding: bigHeight/2)
     }
 }
