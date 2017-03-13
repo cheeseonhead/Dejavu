@@ -11,6 +11,7 @@ class GLPostCollectionViewCell: UICollectionViewCell
     }()
     
     var titleLabel: UILabel = UILabel()
+    var dateLabel: UILabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,6 +36,6 @@ class GLPostCollectionViewCell: UICollectionViewCell
         backView.anchorLeftInCenter(withLeftPadding: bigHeight/2, height: bigHeight - 20, rightPadding: 10)
         
         titleLabel.sizeToFit()
-        titleLabel.anchorLeftInTop(withLeftPadding: bigHeight/2)
+        titleLabel.anchorLeftInTop(withLeftPadding: bigHeight/2 + Padding.edgePadding.rawValue, topPadding: Padding.edgePadding.rawValue)
     }
 }
