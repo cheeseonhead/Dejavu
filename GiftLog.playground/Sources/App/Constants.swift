@@ -19,6 +19,7 @@ enum ImageName: String
     case marker = "Marker.png"
     case savingBook = "SavingBook.png"
     case winter = "winter-solstice.jpg"
+    case dog = "dog.jpg"
 }
 
 struct Coordinates
@@ -30,6 +31,10 @@ struct Coordinates
 struct DummyData
 {
     static let existingPosts = [
+        Post(title: "Tim Cook", description: "I was walking around and saw Tim getting water, then he raised his head and smiled at me. We were 100 meters apart.",date: Post.dateFormatter.date(from: "2017-03-25 18:56")!, image: UIImage(named: ImageName.winter.rawValue), location: Coordinates.InfiniteLoop1),
+        Post(title: "Tim Cook", description: "I was walking around and saw Tim getting water, then he raised his head and smiled at me. We were 100 meters apart.",date: Post.dateFormatter.date(from: "2017-03-25 18:56")!, image: UIImage(named: ImageName.dog.rawValue), location: Coordinates.InfiniteLoop1),
+        Post(title: "Tim Cook", description: "I was walking around and saw Tim getting water, then he raised his head and smiled at me. We were 100 meters apart.",date: Post.dateFormatter.date(from: "2017-03-25 18:56")!, image: UIImage(named: ImageName.winter.rawValue), location: Coordinates.InfiniteLoop1),
+        Post(title: "Tim Cook", description: "I was walking around and saw Tim getting water, then he raised his head and smiled at me. We were 100 meters apart.",date: Post.dateFormatter.date(from: "2017-03-25 18:56")!, image: UIImage(named: ImageName.winter.rawValue), location: Coordinates.InfiniteLoop1),
         Post(title: "Tim Cook", description: "I was walking around and saw Tim getting water, then he raised his head and smiled at me. We were 100 meters apart.",date: Post.dateFormatter.date(from: "2017-03-25 18:56")!, image: UIImage(named: ImageName.winter.rawValue), location: Coordinates.InfiniteLoop1)
     ]
 }
