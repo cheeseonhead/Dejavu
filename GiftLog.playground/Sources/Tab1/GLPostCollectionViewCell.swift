@@ -20,7 +20,9 @@ class GLPostCollectionViewCell: UICollectionViewCell
         addSubview(imageView)
         
         titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        dateLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
         backView.addSubview(titleLabel)
+        backView.addSubview(dateLabel)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,5 +39,8 @@ class GLPostCollectionViewCell: UICollectionViewCell
         
         titleLabel.sizeToFit()
         titleLabel.anchorLeftInTop(withLeftPadding: bigHeight/2 + Padding.edgePadding.rawValue, topPadding: Padding.edgePadding.rawValue)
+        
+        dateLabel.sizeToFit()
+        dateLabel.alignUnderMatchingLeft(titleLabel, topPadding: 4)
     }
 }
