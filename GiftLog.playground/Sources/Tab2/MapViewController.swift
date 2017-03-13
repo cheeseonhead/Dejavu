@@ -39,15 +39,21 @@ class MapViewController: UIViewController, MKMapViewDelegate
             return nil
         }
         
-        let identifier = "PostAnnotation"
+        guard let postAnnotation = annotation as? PostAnnotation else { return nil }
         
-        var postAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        print("3 \(postAnnotation)")
+        
+        let identifier = "PostAnnotation"
+        var postAnnotationView: PostAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? PostAnnotationView
         if postAnnotationView == nil {
             postAnnotationView = PostAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            postAnnotationView?.canShowCallout = true
         } else {
             postAnnotationView!.annotation = annotation
         }
+        
+        postAnnotationView?.imageView.image = postAnnotation.thumbNail
+        
+        print("4 \(postAnnotationView?.imageView.image)")
         
         return postAnnotationView
     }
@@ -74,7 +80,7 @@ fileprivate extension MapViewController
     func addAnnotations(from posts: [Post])
     {
         for post in posts {
-            let annotation = PostAnnotation.init(coordinate: post.location, title: post.title, subtitle: post.description)
+            let annotation = PostAnnotation.init(coordinate: post.location, title: post.title, subtitle: post.description, thumbNail: post.image!)
             
             mapView.addAnnotation(annotation)
         }
