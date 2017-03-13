@@ -2,8 +2,14 @@
 
 import UIKit
 import PlaygroundSupport
+import MapKit
 
 let tabBarController = GLTabBarController()
 
 PlaygroundPage.current.liveView = tabBarController
-print(tabBarController.view)
+
+var coder = CLGeocoder()
+
+coder.geocodeAddressString("Infinite Loop 2") { (placeMark, error) in
+    print(placeMark ?? "")
+}
