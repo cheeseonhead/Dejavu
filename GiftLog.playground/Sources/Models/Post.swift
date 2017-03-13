@@ -5,7 +5,7 @@ struct Post
 {
     static let dateFormatter = { () -> DateFormatter in
         var temp = DateFormatter()
-        temp.dateFormat = "MM-dd-yyyy HH:mm"
+        temp.dateFormat = "yyyy-MM-dd HH:mm"
         return temp
     }()
     
