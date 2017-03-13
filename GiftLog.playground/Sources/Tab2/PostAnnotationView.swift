@@ -20,7 +20,5 @@ class PostAnnotationView: MKPinAnnotationView
         
         imageView.set(position: CGPoint(x: 0, y: 0), edgeLength: 46)
         imageView.backgroundColor = UIColor.brown
-        
-        print(self)
     }
 }

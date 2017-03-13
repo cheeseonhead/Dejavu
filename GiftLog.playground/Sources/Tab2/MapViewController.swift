@@ -41,8 +41,6 @@ class MapViewController: UIViewController, MKMapViewDelegate
         
         guard let postAnnotation = annotation as? PostAnnotation else { return nil }
         
-        print("3 \(postAnnotation)")
-        
         let identifier = "PostAnnotation"
         var postAnnotationView: PostAnnotationView? = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? PostAnnotationView
         if postAnnotationView == nil {
@@ -52,8 +50,6 @@ class MapViewController: UIViewController, MKMapViewDelegate
         }
         
         postAnnotationView?.imageView.image = postAnnotation.thumbNail
-        
-        print("4 \(postAnnotationView?.imageView.image)")
         
         return postAnnotationView
     }
