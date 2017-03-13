@@ -3,6 +3,8 @@ import MapKit
 
 class PostAnnotationView: MKPinAnnotationView
 {
+    var imageView = RoundImageView()
+    
     required init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
@@ -12,11 +14,12 @@ class PostAnnotationView: MKPinAnnotationView
     {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         
-        let image = RoundImageView()
-        leftCalloutAccessoryView = image
+        canShowCallout = true
         
-        image.set(position: CGPoint(x: 0, y: 0), edgeLength: 100)
-        image.backgroundColor = UIColor.brown
+        leftCalloutAccessoryView = imageView
+        
+        imageView.set(position: CGPoint(x: 0, y: 0), edgeLength: 50)
+        imageView.backgroundColor = UIColor.brown
         
         print(self)
     }
