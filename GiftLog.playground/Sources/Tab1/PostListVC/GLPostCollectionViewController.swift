@@ -42,4 +42,11 @@ class GLPostCollectionViewController: UICollectionViewController, UICollectionVi
         cell.dateLabel.text = Post.dateFormatter.string(from: currentPost.date)
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    {
+        let viewPostViewController = ViewPostViewController(nibName: nil, bundle: nil)
+        viewPostViewController.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(viewPostViewController, animated: true)
+    }
 }
