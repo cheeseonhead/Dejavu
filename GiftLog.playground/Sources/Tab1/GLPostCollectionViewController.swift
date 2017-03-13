@@ -32,8 +32,13 @@ class GLPostCollectionViewController: UICollectionViewController, UICollectionVi
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostCell", for: indexPath) as! GLPostCollectionViewCell
+        
+        let currentPost = DummyData.existingPosts[indexPath.row]
+        
         cell.imageView.image = UIImage(named: ImageName.winter.rawValue)!
-        cell.titleLabel.text = DummyData.existingPosts[indexPath.row].title
+        cell.titleLabel.text = currentPost.title
+        
+        cell.dateLabel.text = Post.dateFormatter.string(from: currentPost.date)
         return cell
     }
 }
