@@ -28,4 +28,14 @@ extension UIView
         let newFrame = CGRect(x: view.frame.origin.x, y: newY, width: oldFrame.width, height: oldFrame.height)
         frame = newFrame
     }
+    
+    func alignUnderMatchingLeftFillingHeight(_ view: UIView, topPadding: CGFloat, bottomPadding: CGFloat)
+    {
+        guard let supView = superview else {return}
+        
+        let newY = view.frame.origin.y + view.frame.size.height + topPadding
+        let newHeight = supView.frame.size.height - newY - bottomPadding
+        let oldFrame = frame
+        frame = CGRect(x: view.frame.origin.x, y: newY, width: oldFrame.width, height: newHeight)
+    }
 }
