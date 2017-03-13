@@ -16,8 +16,16 @@ extension UIView
         frame = final
     }
     
-    func anchorLeftInTop(withLeftPadding leftPadding: CGFloat)
+    func anchorLeftInTop(withLeftPadding leftPadding: CGFloat, topPadding: CGFloat)
     {
-        frame = CGRect(x: leftPadding, y: 0, width: frame.size.width, height: frame.size.height)
+        frame = CGRect(x: leftPadding, y: topPadding, width: frame.size.width, height: frame.size.height)
+    }
+    
+    func alignUnderMatchingLeft(_ view: UIView, topPadding: CGFloat)
+    {
+        let newY = view.frame.origin.y + view.frame.size.height + topPadding
+        let oldFrame = frame
+        let newFrame = CGRect(x: view.frame.origin.x, y: newY, width: oldFrame.width, height: oldFrame.height)
+        frame = newFrame
     }
 }
