@@ -18,7 +18,7 @@ class PostAnnotationView: MKPinAnnotationView
         
         leftCalloutAccessoryView = imageView
         
-        imageView.set(position: CGPoint(x: 0, y: 0), edgeLength: 50)
+        imageView.set(position: CGPoint(x: 0, y: 0), edgeLength: 46)
         imageView.backgroundColor = UIColor.brown
         
         print(self)
