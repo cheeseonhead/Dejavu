@@ -2,6 +2,8 @@ import UIKit
 
 class GLPostCollectionViewCell: UICollectionViewCell
 {
+    let imageWidth: CGFloat = 30
+    
     var imageView = RoundImageView()
     var backView: UIView = {
         var view = UIView()
@@ -10,8 +12,10 @@ class GLPostCollectionViewCell: UICollectionViewCell
         return view
     }()
     
-    var titleLabel: UILabel = UILabel()
-    var dateLabel: UILabel = UILabel()
+    var titleLabel = UILabel()
+    var dateLabel = UILabel()
+    var descriptionLabel = UILabel()
+    var rightArrowView = UIImageView(image: UIImage(named: "rightInCircle.png"))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,8 +25,15 @@ class GLPostCollectionViewCell: UICollectionViewCell
         
         titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
         dateLabel.font = UIFont.preferredFont(forTextStyle: .caption2)
+        
+        let referenceFont = UIFont.preferredFont(forTextStyle: .subheadline)
+        descriptionLabel.font = UIFont(name: referenceFont.fontName, size: 12)
+        descriptionLabel.numberOfLines = 4
+        
         backView.addSubview(titleLabel)
         backView.addSubview(dateLabel)
+        backView.addSubview(descriptionLabel)
+        backView.addSubview(rightArrowView)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,10 +48,15 @@ class GLPostCollectionViewCell: UICollectionViewCell
         
         backView.anchorLeftInCenter(withLeftPadding: bigHeight/2, height: bigHeight - 20, rightPadding: 10)
         
+        rightArrowView.anchorRightInCenter(withRightPadding: 4, height: imageWidth, width: imageWidth)
+        
         titleLabel.sizeToFit()
         titleLabel.anchorLeftInTop(withLeftPadding: bigHeight/2 + Padding.edgePadding.rawValue, topPadding: Padding.edgePadding.rawValue)
         
         dateLabel.sizeToFit()
-        dateLabel.alignUnderMatchingLeft(titleLabel, topPadding: 4)
+        dateLabel.alignUnderMatchingLeft(titleLabel, topPadding: 0)
+        
+        descriptionLabel.sizeToFit()
+        descriptionLabel.alignUnderMatchingLeft(dateLabel, topPadding: 0, fillingHeightWithBottomPadding: Padding.edgePadding.rawValue, fillingWidthWithRightPadding: 2 + imageWidth)
     }
 }
