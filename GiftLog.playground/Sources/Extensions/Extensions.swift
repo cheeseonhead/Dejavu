@@ -29,13 +29,23 @@ extension UIView
         frame = newFrame
     }
     
-    func alignUnderMatchingLeftFillingHeight(_ view: UIView, topPadding: CGFloat, bottomPadding: CGFloat)
+    func alignUnderMatchingLeft(_ view: UIView, topPadding: CGFloat, fillingHeightWithBottomPadding bottomPadding: CGFloat, fillingWidthWithRightPadding rightPadding: CGFloat)
     {
         guard let supView = superview else {return}
         
         let newY = view.frame.origin.y + view.frame.size.height + topPadding
         let newHeight = supView.frame.size.height - newY - bottomPadding
-        let oldFrame = frame
-        frame = CGRect(x: view.frame.origin.x, y: newY, width: oldFrame.width, height: newHeight)
+        let newWidth = supView.frame.size.width - view.frame.origin.x - rightPadding
+        frame = CGRect(x: view.frame.origin.x, y: newY, width: newWidth, height: newHeight)
+    }
+    
+    func anchorRightInCenter(withRightPadding rightPadding: CGFloat, height: CGFloat, width: CGFloat)
+    {
+        guard let supView = superview else {return}
+        
+        let newY = (supView.frame.size.height - height) / 2
+        let newX = supView.frame.size.width - rightPadding - width
+        
+        frame = CGRect(x: newX, y: newY, width: width, height: height)
     }
 }
