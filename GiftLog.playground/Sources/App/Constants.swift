@@ -23,6 +23,6 @@ struct Coordinates
 struct DummyData
 {
     static let existingPosts = [
-        Post(title: "Tim Cook", description: "I was walking around and saw Tim getting water, then he raised his head and smiled at me. We were 100 meters apart.", image: nil, location: Coordinates.InfiniteLoop1)
+        Post(title: "Tim Cook", description: "I was walking around and saw Tim getting water, then he raised his head and smiled at me. We were 100 meters apart.", image: UIImage(named: ImageName.winter.rawValue), location: Coordinates.InfiniteLoop1)
     ]
 }
