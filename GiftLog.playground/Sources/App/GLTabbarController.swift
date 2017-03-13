@@ -13,7 +13,7 @@ public class GLTabBarController: UITabBarController
         let vc1 = GLPostsNavigationController.init(nibName: nil, bundle: nil)
         let vc2 = MapViewNavigationController.init(nibName: nil, bundle: nil)
         self.viewControllers = [vc1, vc2]
-        self.selectedViewController = vc2
+        self.selectedViewController = vc1
     }
     
     public func setBackColor(color: UIColor)
