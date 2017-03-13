@@ -15,4 +15,9 @@ extension UIView
         let final = CGRect(x: leftPadding, y: top, width: width, height: height)
         frame = final
     }
+    
+    func anchorLeftInTop(withLeftPadding leftPadding: CGFloat)
+    {
+        frame = CGRect(x: leftPadding, y: 0, width: frame.size.width, height: frame.size.height)
+    }
 }
