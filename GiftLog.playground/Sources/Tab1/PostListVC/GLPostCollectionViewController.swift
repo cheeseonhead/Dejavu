@@ -54,6 +54,8 @@ class GLPostCollectionViewController: UICollectionViewController, UICollectionVi
     
     func addButtonPressed()
     {
-        
+        let addPostViewController = AddPostViewController(nibName: nil, bundle: nil)
+        addPostViewController.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(addPostViewController, animated: true)
     }
 }
