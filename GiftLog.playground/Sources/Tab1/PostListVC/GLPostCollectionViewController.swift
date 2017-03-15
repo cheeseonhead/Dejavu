@@ -10,11 +10,13 @@ class GLPostCollectionViewController: UICollectionViewController, UICollectionVi
         
         super.init(collectionViewLayout: layout)
         
-        self.collectionView?.backgroundColor = UIColor.white
-        self.collectionView?.register(GLPostCollectionViewCell.self, forCellWithReuseIdentifier: "PostCell")
-        self.collectionView?.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        collectionView?.backgroundColor = UIColor.white
+        collectionView?.register(GLPostCollectionViewCell.self, forCellWithReuseIdentifier: "PostCell")
+        collectionView?.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         
-        self.navigationItem.title = TitleConstant.postListVC.rawValue
+        navigationItem.title = TitleConstant.postListVC.rawValue
+        let plusButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed))
+        navigationItem.setRightBarButton(plusButton, animated: false)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -48,5 +50,10 @@ class GLPostCollectionViewController: UICollectionViewController, UICollectionVi
         let viewPostViewController = ViewPostViewController(nibName: nil, bundle: nil)
         viewPostViewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(viewPostViewController, animated: true)
+    }
+    
+    func addButtonPressed()
+    {
+        
     }
 }
