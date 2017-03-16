@@ -2,7 +2,7 @@ import UIKit
 
 class AddPostViewController: UIViewController
 {
-    var groupView = UIView()
+    var groupView = BrownView()
     
     override func viewDidLoad()
     {
@@ -13,8 +13,6 @@ class AddPostViewController: UIViewController
         print(navigationItem)
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonPressed))
         
-        groupView.backgroundColor = UIColor.brown
-        groupView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(groupView)
         
         let constraints = [
