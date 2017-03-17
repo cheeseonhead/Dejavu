@@ -36,10 +36,7 @@ class AddPostCardView: UIView
         
         layer.cornerRadius = Style.cornerRadius
         
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.3
-        layer.shadowOffset = CGSize.zero
-        layer.shadowRadius = 10
+        addDefaultShadow()
     }
     
     
@@ -68,7 +65,6 @@ class AddPostCardView: UIView
             NSLayoutConstraint(item: titleField, attribute: .left, relatedBy: .equal, toItem: pickImageButton, attribute: .right, multiplier: 1.0, constant: Style.horizontalSpacing),
             NSLayoutConstraint(item: titleField, attribute: .top, relatedBy: .equal, toItem: pickImageButton, attribute: .top, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: titleField, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: -Style.horizontalSpacing),
-//            NSLayoutConstraint(item: titleField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: Style.textFieldHeight)
         ]
         
         addConstraints(constraints)
@@ -81,7 +77,6 @@ class AddPostCardView: UIView
     
     func setupTemp()
     {
-//        pickImageButton.setImage(UIImage(named:ImageName.dog.rawValue), for: .normal)
         addConstraint(
             NSLayoutConstraint(item: pickImageButton, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -10))
     }

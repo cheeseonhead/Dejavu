@@ -10,6 +10,6 @@ PlaygroundPage.current.liveView = tabBarController
 
 var coder = CLGeocoder()
 
-//coder.geocodeAddressString("Infinite Loop 2") { (placeMark, error) in
-//    print(placeMark ?? "")
-//}
+coder.geocodeAddressString("Infinite Loop 2") { (placeMark, error) in
+    print(placeMark ?? "")
+}

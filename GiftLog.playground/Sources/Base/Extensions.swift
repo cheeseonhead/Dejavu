@@ -48,4 +48,31 @@ extension UIView
         
         frame = CGRect(x: newX, y: newY, width: width, height: height)
     }
+    
+    func addDefaultShadow()
+    {
+        addShadow(opacity: 0.3, radius: 10)
+    }
+    
+    func addShadow(opacity: Float, radius: CGFloat)
+    {
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = opacity
+        layer.shadowOffset = CGSize.zero
+        layer.shadowRadius = radius
+    }
+}
+
+protocol Roundable
+{
+    func set(position: CGPoint, edgeLength: CGFloat)
+}
+
+extension Roundable where Self: UIView
+{
+    func set(position: CGPoint, edgeLength: CGFloat) {
+        let newFrame = CGRect(x: position.x, y: position.y, width: edgeLength, height: edgeLength)
+        frame = newFrame
+        layer.cornerRadius = edgeLength/2
+    }
 }

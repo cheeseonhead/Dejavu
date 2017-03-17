@@ -1,6 +1,6 @@
 import UIKit
 
-class RoundImageView: UIView
+class RoundImageView: UIView, Roundable
 {
     var imageView = UIImageView()
     var image: UIImage? {
@@ -13,7 +13,6 @@ class RoundImageView: UIView
     {
         super.init(frame: CGRect.zero)
         
-        setupSelf()
         setupImageView()
     }
     
@@ -30,14 +29,6 @@ class RoundImageView: UIView
         
         imageView.layer.cornerRadius = edgeLength/2
         layer.cornerRadius = edgeLength/2
-    }
-    
-    func setupSelf()
-    {
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.3
-        layer.shadowOffset = CGSize.zero
-        layer.shadowRadius = 10
     }
     
     func setupImageView()
