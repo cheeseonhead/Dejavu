@@ -1,6 +1,6 @@
 import UIKit
 
-class BrownView: UIView
+class AddPostScrollViewWrapperView: UIView
 {
     var scrollView: UIScrollView!
     var contentView: UIView!
@@ -20,27 +20,27 @@ class BrownView: UIView
     
     func selfSetup()
     {
-        backgroundColor = UIColor.brown
+        backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.5411764706, blue: 0.537254902, alpha: 1)
         translatesAutoresizingMaskIntoConstraints = false
     }
     
     func setupScrollView()
     {
         scrollView = UIScrollView(frame: CGRect.zero)
-        scrollView.backgroundColor = UIColor.magenta
+        scrollView.backgroundColor = UIColor.clear
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(scrollView)
         
         var constraints = [
-            NSLayoutConstraint(item: scrollView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 10),
-            NSLayoutConstraint(item: scrollView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -10),
-            NSLayoutConstraint(item: scrollView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 10),
-            NSLayoutConstraint(item: scrollView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: -10)
+            NSLayoutConstraint(item: scrollView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: scrollView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: scrollView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: scrollView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: 0)
         ]
         
         addConstraints(constraints)
         
-        contentView = ContentView()
+        contentView = AddPostCardHolder()
         scrollView.addSubview(contentView)
         
         // May need to add constraints contentView->ScrollView
@@ -54,7 +54,7 @@ class BrownView: UIView
         addConstraints(constraints)
         
         constraints = [
-            NSLayoutConstraint(item: contentView, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 0.9, constant: 0)
+            NSLayoutConstraint(item: contentView, attribute: .width, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 1, constant: 0)
         ]
         
         addConstraints(constraints)
