@@ -1,15 +1,19 @@
 import UIKit
 
-class RoundImageView: UIImageView
+class RoundImageView: UIView
 {
+    var imageView = UIImageView()
+    var image: UIImage? {
+        didSet {
+            imageView.image = image
+        }
+    }
+    
     required init()
     {
         super.init(frame: CGRect.zero)
-        contentMode = .scaleAspectFill
-        layer.borderWidth = 0
-        layer.masksToBounds = false
-        layer.borderColor = UIColor.black.cgColor
-        clipsToBounds = true
+        
+        setupImageView()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -21,6 +25,19 @@ class RoundImageView: UIImageView
         let newFrame = CGRect(x: position.x, y: position.y, width: edgeLength, height: edgeLength)
         frame = newFrame
         
-        layer.cornerRadius = edgeLength/2
+        imageView.frame = CGRect(x: 0, y: 0, width: edgeLength, height: edgeLength)
+        
+        imageView.layer.cornerRadius = edgeLength/2
+    }
+    
+    func setupImageView()
+    {
+        addSubview(imageView)
+        
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.borderWidth = 0
+        imageView.layer.masksToBounds = false
+        imageView.layer.borderColor = UIColor.black.cgColor
+        imageView.clipsToBounds = true
     }
 }
