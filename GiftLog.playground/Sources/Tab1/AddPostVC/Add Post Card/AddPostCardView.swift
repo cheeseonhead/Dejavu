@@ -6,11 +6,13 @@ class AddPostCardView: UIView
     struct Style
     {
         static let cornerRadius: CGFloat = 10
-        
+        static let horizontalSpacing: CGFloat = 10
+        static let textFieldHeight: CGFloat = 30
         static let imageSide: CGFloat = 100
     }
     
-    var pickImageButton = UIButton()
+    var pickImageButton = PickImageButton()
+    var titleField = UITextField()
     
     required init()
     {
@@ -18,6 +20,7 @@ class AddPostCardView: UIView
         
         setupSelf()
         setupPickImageButton()
+        setupTitleField()
         
         setupTemp()
     }
@@ -42,11 +45,7 @@ class AddPostCardView: UIView
     
     func setupPickImageButton()
     {
-        pickImageButton.setImage(UIImage(named:ImageName.dog.rawValue), for: .normal)
         addSubview(pickImageButton)
-        pickImageButton.translatesAutoresizingMaskIntoConstraints = false
-        pickImageButton.imageView?.contentMode = .scaleAspectFill
-        
         
         let constraints = [
             NSLayoutConstraint(item: pickImageButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: Style.imageSide),
@@ -57,9 +56,32 @@ class AddPostCardView: UIView
         
         addConstraints(constraints)
     }
+    
+    func setupTitleField()
+    {
+        titleField.borderStyle = .roundedRect
+        titleField.placeholder = "Title"
+        titleField.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(titleField)
+        
+        let constraints = [
+            NSLayoutConstraint(item: titleField, attribute: .left, relatedBy: .equal, toItem: pickImageButton, attribute: .right, multiplier: 1.0, constant: Style.horizontalSpacing),
+            NSLayoutConstraint(item: titleField, attribute: .top, relatedBy: .equal, toItem: pickImageButton, attribute: .top, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: titleField, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: -Style.horizontalSpacing),
+//            NSLayoutConstraint(item: titleField, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: Style.textFieldHeight)
+        ]
+        
+        addConstraints(constraints)
+    }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        print("\(#function) frame:\(subviews)")
+    }
+    
     func setupTemp()
     {
+        pickImageButton.setImage(UIImage(named:ImageName.dog.rawValue), for: .normal)
         addConstraint(
             NSLayoutConstraint(item: pickImageButton, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -10))
     }

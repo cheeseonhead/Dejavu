@@ -29,6 +29,7 @@ class AddPostScrollViewWrapperView: UIView
         scrollView = UIScrollView(frame: CGRect.zero)
         scrollView.backgroundColor = UIColor.clear
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.alwaysBounceVertical = true
         addSubview(scrollView)
         
         var constraints = [
