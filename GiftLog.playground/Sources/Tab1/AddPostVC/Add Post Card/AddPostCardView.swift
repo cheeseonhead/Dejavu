@@ -81,7 +81,7 @@ class AddPostCardView: UIView
     
     func setupTemp()
     {
-        pickImageButton.setImage(UIImage(named:ImageName.dog.rawValue), for: .normal)
+//        pickImageButton.setImage(UIImage(named:ImageName.dog.rawValue), for: .normal)
         addConstraint(
             NSLayoutConstraint(item: pickImageButton, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -10))
     }

@@ -20,6 +20,7 @@ enum ImageName: String
     case savingBook = "SavingBook.png"
     case winter = "winter-solstice.jpg"
     case dog = "dog.jpg"
+    case camera = "camera.png"
 }
 
 struct Coordinates
