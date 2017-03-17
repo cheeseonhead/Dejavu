@@ -13,6 +13,7 @@ class RoundImageView: UIView
     {
         super.init(frame: CGRect.zero)
         
+        setupSelf()
         setupImageView()
     }
     
@@ -28,6 +29,15 @@ class RoundImageView: UIView
         imageView.frame = CGRect(x: 0, y: 0, width: edgeLength, height: edgeLength)
         
         imageView.layer.cornerRadius = edgeLength/2
+        layer.cornerRadius = edgeLength/2
+    }
+    
+    func setupSelf()
+    {
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.3
+        layer.shadowOffset = CGSize.zero
+        layer.shadowRadius = 10
     }
     
     func setupImageView()
