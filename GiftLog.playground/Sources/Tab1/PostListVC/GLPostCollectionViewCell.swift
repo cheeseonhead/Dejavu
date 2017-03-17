@@ -23,9 +23,11 @@ class GLPostCollectionViewCell: UICollectionViewCell
         
         addSubview(shadowView)
         shadowView.backgroundColor = UIColor.red
-        shadowView.addDefaultShadow()
+        shadowView.addShadow(opacity: 0.5, radius: 4)
         
         addSubview(backView)
+        backView.addShadow(opacity: 0.5, radius: 4)
+        
         addSubview(imageView)
         
         titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
