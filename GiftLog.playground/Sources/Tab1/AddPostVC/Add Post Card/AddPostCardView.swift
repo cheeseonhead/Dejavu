@@ -33,7 +33,7 @@ class AddPostCardView: UIView
     required init()
     {
         time = Date()
-        currentLocation = Coordinates.InfiniteLoop3
+        currentLocation = Coordinates.InfiniteLoop5
         super.init(frame: CGRect.zero)
         
         setupSelf()
