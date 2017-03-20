@@ -1,7 +1,7 @@
 import UIKit
 import MapKit
 
-class AddPostCardView: UIView
+class AddPostCardView: CardView
 {
     struct Style
     {

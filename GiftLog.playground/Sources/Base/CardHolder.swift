@@ -1,19 +1,20 @@
 import UIKit
 
-class AddPostCardHolder: UIView
+class CardHolder: UIView
 {
     let verticalPadding: CGFloat = 20
     let sidePadding: CGFloat = 10
     
-    var cardView = AddPostCardView()
+    var cardView: CardView!
     
-    required init()
+    required init(cardView: CardView)
     {
         super.init(frame: CGRect.zero)
         
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = UIColor.clear
         
+        self.cardView = cardView
         setupCard()
     }
     

@@ -1,13 +1,14 @@
 import UIKit
 
-class AddPostScrollViewWrapperView: UIView
+class CardScrollViewWrapperView: UIView
 {
     var scrollView: UIScrollView!
-    var contentView: AddPostCardHolder!
+    var contentView: CardHolder!
     
-    required init()
+    required init(cardView: CardView)
     {
         super.init(frame: CGRect.zero)
+        contentView = CardHolder(cardView: cardView)
         
         selfSetup()
         setupScrollView()
@@ -42,7 +43,6 @@ class AddPostScrollViewWrapperView: UIView
         
         addConstraints(constraints)
         
-        contentView = AddPostCardHolder()
         scrollView.addSubview(contentView)
         
         // May need to add constraints contentView->ScrollView

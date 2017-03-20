@@ -2,7 +2,8 @@ import UIKit
 
 class AddPostViewController: UIViewController
 {
-    var groupView = AddPostScrollViewWrapperView()
+    var groupView: CardScrollViewWrapperView!
+    var cardView = AddPostCardView()
     
     override func viewDidLoad()
     {
@@ -14,6 +15,7 @@ class AddPostViewController: UIViewController
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonPressed))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonPressed))
         
+        groupView = CardScrollViewWrapperView(cardView: cardView)
         view.addSubview(groupView)
         
         let constraints = [
@@ -33,7 +35,7 @@ class AddPostViewController: UIViewController
     
     func saveButtonPressed()
     {
-        let post = groupView.contentView.cardView.generatePost()
+        let post = cardView.generatePost()
         DummyData.existingPosts.append(post)
         navigationController?.dismiss(animated: true, completion: nil)
     }
