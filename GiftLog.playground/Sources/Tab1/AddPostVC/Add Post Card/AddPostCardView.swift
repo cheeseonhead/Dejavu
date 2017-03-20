@@ -1,11 +1,6 @@
 import UIKit
 import MapKit
 
-protocol AddPostCardViewDelegate: class
-{
-    func pickImageButtonTapped()
-}
-
 class AddPostCardView: UIView
 {
     struct Style
@@ -27,8 +22,6 @@ class AddPostCardView: UIView
     var time: Date
     var currentLocation: CLLocationCoordinate2D
     var image: UIImage?
-    
-    weak var delegate: AddPostCardViewDelegate?
     
     required init()
     {
@@ -60,15 +53,6 @@ class AddPostCardView: UIView
     }
 }
 
-// MARK: - Actions
-extension AddPostCardView
-{
-    func pickImageButtonTapped()
-    {
-        delegate?.pickImageButtonTapped()
-    }
-}
-
 // MARK: - Setup Functions
 extension AddPostCardView
 {
@@ -86,7 +70,6 @@ extension AddPostCardView
     func setupPickImageButton()
     {
         pickImageButton.layer.cornerRadius = Style.cornerRadius
-        pickImageButton.addTarget(self, action: #selector(pickImageButtonTapped), for: .touchUpInside)
         addSubview(pickImageButton)
         
         let constraints = [

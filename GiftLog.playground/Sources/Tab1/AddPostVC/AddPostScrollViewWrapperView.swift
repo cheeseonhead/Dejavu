@@ -1,16 +1,9 @@
 import UIKit
 
-protocol AddPostScrollViewWrapperViewDelegate: class
-{
-    func pickImageButtonTapped()
-}
-
 class AddPostScrollViewWrapperView: UIView
 {
     var scrollView: UIScrollView!
     var contentView: AddPostCardHolder!
-    
-    weak var delegate: AddPostScrollViewWrapperViewDelegate?
     
     required init()
     {
@@ -50,7 +43,6 @@ class AddPostScrollViewWrapperView: UIView
         addConstraints(constraints)
         
         contentView = AddPostCardHolder()
-        contentView.cardView.delegate = self
         scrollView.addSubview(contentView)
         
         // May need to add constraints contentView->ScrollView
@@ -77,10 +69,3 @@ class AddPostScrollViewWrapperView: UIView
     }
 }
 
-extension AddPostScrollViewWrapperView: AddPostCardViewDelegate
-{
-    func pickImageButtonTapped()
-    {
-        delegate?.pickImageButtonTapped()
-    }
-}

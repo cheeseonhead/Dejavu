@@ -14,7 +14,6 @@ class AddPostViewController: UIViewController
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonPressed))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonPressed))
         
-        groupView.delegate = self
         view.addSubview(groupView)
         
         let constraints = [
@@ -37,11 +36,5 @@ class AddPostViewController: UIViewController
         let post = groupView.contentView.cardView.generatePost()
         DummyData.existingPosts.append(post)
         navigationController?.dismiss(animated: true, completion: nil)
-    }
-}
-
-extension AddPostViewController: AddPostScrollViewWrapperViewDelegate
-{
-    func pickImageButtonTapped() {
     }
 }
