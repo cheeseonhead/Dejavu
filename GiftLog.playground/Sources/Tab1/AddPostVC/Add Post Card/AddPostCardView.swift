@@ -3,7 +3,7 @@ import MapKit
 
 class AddPostCardView: CardView
 {
-    struct Style
+    fileprivate struct Style
     {
         static let cornerRadius: CGFloat = 10
         static let horizontalSpacing: CGFloat = 10
@@ -27,7 +27,7 @@ class AddPostCardView: CardView
     {
         time = Date()
         currentLocation = Coordinates.InfiniteLoop5
-        super.init(frame: CGRect.zero)
+        super.init()
         
         setupSelf()
         setupPickImageButton()
@@ -58,12 +58,7 @@ extension AddPostCardView
 {
     func setupSelf()
     {
-        translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        
-        layer.cornerRadius = Style.cornerRadius
-        
-        addDefaultShadow()
     }
     
     

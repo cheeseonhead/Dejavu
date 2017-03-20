@@ -2,7 +2,7 @@ import UIKit
 
 class AddPostViewController: UIViewController
 {
-    var groupView: CardScrollViewWrapperView!
+    var scrollView: CardScrollViewWrapperView!
     var cardView = AddPostCardView()
     
     override func viewDidLoad()
@@ -15,14 +15,14 @@ class AddPostViewController: UIViewController
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonPressed))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonPressed))
         
-        groupView = CardScrollViewWrapperView(cardView: cardView)
-        view.addSubview(groupView)
+        scrollView = CardScrollViewWrapperView(cardView: cardView)
+        view.addSubview(scrollView)
         
         let constraints = [
-            NSLayoutConstraint(item: groupView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: groupView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottomMargin, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: groupView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: groupView, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: 0)
+            NSLayoutConstraint(item: scrollView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: scrollView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottomMargin, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: scrollView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: scrollView, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: 0)
         ]
         
         view.addConstraints(constraints)
