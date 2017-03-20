@@ -43,6 +43,5 @@ class AddPostViewController: UIViewController
 extension AddPostViewController: AddPostScrollViewWrapperViewDelegate
 {
     func pickImageButtonTapped() {
-        print("Pick image button tapped")
     }
 }
