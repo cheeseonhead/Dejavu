@@ -17,6 +17,7 @@ class AddPostCardView: UIView
     var pickImageButton = PickImageButton()
     var titleField = UITextField()
     var contentField = UITextView()
+    var timeLabel = UILabel()
     
     required init()
     {
@@ -26,6 +27,7 @@ class AddPostCardView: UIView
         setupPickImageButton()
         setupTitleField()
         setupContentField()
+        setupTimeLabel()
         
         setupTemp()
     }
@@ -33,7 +35,11 @@ class AddPostCardView: UIView
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+}
+
+// MARK: - Setup Functions
+extension AddPostCardView
+{
     func setupSelf()
     {
         translatesAutoresizingMaskIntoConstraints = false
@@ -47,6 +53,7 @@ class AddPostCardView: UIView
     
     func setupPickImageButton()
     {
+        pickImageButton.layer.cornerRadius = Style.cornerRadius
         addSubview(pickImageButton)
         
         let constraints = [
@@ -54,7 +61,7 @@ class AddPostCardView: UIView
             NSLayoutConstraint(item: pickImageButton, attribute: .width, relatedBy: .equal, toItem: pickImageButton, attribute: .height, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: pickImageButton, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 10),
             NSLayoutConstraint(item: pickImageButton, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 10),
-        ]
+            ]
         
         addConstraints(constraints)
     }
@@ -70,7 +77,7 @@ class AddPostCardView: UIView
             NSLayoutConstraint(item: titleField, attribute: .left, relatedBy: .equal, toItem: pickImageButton, attribute: .right, multiplier: 1.0, constant: Style.horizontalSpacing),
             NSLayoutConstraint(item: titleField, attribute: .top, relatedBy: .equal, toItem: pickImageButton, attribute: .top, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: titleField, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: -Style.horizontalSpacing),
-        ]
+            ]
         
         addConstraints(constraints)
     }
@@ -80,6 +87,7 @@ class AddPostCardView: UIView
         let contentSectionLabel = UILabel(frame: CGRect.zero)
         contentSectionLabel.text = "Describe the Dejavu:"
         contentSectionLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentSectionLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         addSubview(contentSectionLabel)
         
         contentField.translatesAutoresizingMaskIntoConstraints = false
@@ -97,6 +105,19 @@ class AddPostCardView: UIView
             NSLayoutConstraint(item: contentField, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: Style.horizontalSpacing),
             NSLayoutConstraint(item: contentField, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: -Style.horizontalSpacing),
             NSLayoutConstraint(item: contentField, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -Style.verticalSpacing),
+            ]
+        
+        addConstraints(constraints)
+    }
+
+    func setupTimeLabel()
+    {
+        timeLabel.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(timeLabel)
+        
+        let constraints = [
+            NSLayoutConstraint(item: timeLabel, attribute: .top, relatedBy: .equal, toItem: titleField, attribute: .bottom, multiplier: 1.0, constant: Style.verticalSpacing),
+            NSLayoutConstraint(item: timeLabel, attribute: .left, relatedBy: .equal, toItem: titleField, attribute: .left, multiplier: 1.0, constant: 0)
         ]
         
         addConstraints(constraints)
@@ -104,5 +125,6 @@ class AddPostCardView: UIView
     
     func setupTemp()
     {
+        timeLabel.text = "Mar. 23, 2017 20:39"
     }
 }
