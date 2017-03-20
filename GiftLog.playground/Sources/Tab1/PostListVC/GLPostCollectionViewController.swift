@@ -42,7 +42,8 @@ class GLPostCollectionViewController: UICollectionViewController, UICollectionVi
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostCell", for: indexPath) as! GLPostCollectionViewCell
         
-        let currentPost = DummyData.existingPosts[indexPath.row]
+        let count = DummyData.existingPosts.count
+        let currentPost = DummyData.existingPosts[count - indexPath.row - 1]
         
         cell.imageView.image = currentPost.image
         cell.titleLabel.text = currentPost.title
