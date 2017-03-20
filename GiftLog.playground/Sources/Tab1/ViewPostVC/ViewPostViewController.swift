@@ -11,8 +11,17 @@ class ViewPostViewController: UIViewController
         navigationItem.title = "Post"
         view.backgroundColor = UIColor.brown
         
-        scrollView.frame = view.bounds
-        scrollView.backgroundColor = UIColor.black
+        scrollView = CardScrollViewWrapperView(cardView: cardView)
+        
         view.addSubview(scrollView)
+        
+        let constraints = [
+            NSLayoutConstraint(item: scrollView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: scrollView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottomMargin, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: scrollView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: scrollView, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: 0)
+        ]
+        
+        view.addConstraints(constraints)
     }
 }
