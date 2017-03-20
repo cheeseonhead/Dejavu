@@ -7,12 +7,16 @@ class AddPostCardView: UIView
     {
         static let cornerRadius: CGFloat = 10
         static let horizontalSpacing: CGFloat = 10
+        static let verticalSpacing: CGFloat = Style.horizontalSpacing
         static let textFieldHeight: CGFloat = 30
+        static let contentFieldMinHeight: CGFloat = 300
         static let imageSide: CGFloat = 100
+        static let borderWidth: CGFloat = 1
     }
     
     var pickImageButton = PickImageButton()
     var titleField = UITextField()
+    var contentField = UITextView()
     
     required init()
     {
@@ -21,6 +25,7 @@ class AddPostCardView: UIView
         setupSelf()
         setupPickImageButton()
         setupTitleField()
+        setupContentField()
         
         setupTemp()
     }
@@ -69,15 +74,35 @@ class AddPostCardView: UIView
         
         addConstraints(constraints)
     }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        print("\(#function) frame:\(subviews)")
+    
+    func setupContentField()
+    {
+        let contentSectionLabel = UILabel(frame: CGRect.zero)
+        contentSectionLabel.text = "Describe the Dejavu:"
+        contentSectionLabel.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(contentSectionLabel)
+        
+        contentField.translatesAutoresizingMaskIntoConstraints = false
+        contentField.layer.cornerRadius = Style.cornerRadius
+        contentField.layer.borderWidth = Style.borderWidth
+        contentField.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1).cgColor
+        contentField.isScrollEnabled = false
+        addSubview(contentField)
+        
+        let constraints = [
+            NSLayoutConstraint(item: contentSectionLabel, attribute: .top, relatedBy: .equal, toItem: pickImageButton, attribute: .bottom, multiplier: 1.0, constant: Style.verticalSpacing),
+            NSLayoutConstraint(item: contentSectionLabel, attribute: .left, relatedBy: .equal, toItem: pickImageButton, attribute: .left, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: contentField, attribute: .top, relatedBy: .equal, toItem: contentSectionLabel, attribute: .bottom, multiplier: 1, constant: Style.verticalSpacing),
+            NSLayoutConstraint(item: contentField, attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: Style.contentFieldMinHeight),
+            NSLayoutConstraint(item: contentField, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: Style.horizontalSpacing),
+            NSLayoutConstraint(item: contentField, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: -Style.horizontalSpacing),
+            NSLayoutConstraint(item: contentField, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: -Style.verticalSpacing),
+        ]
+        
+        addConstraints(constraints)
     }
     
     func setupTemp()
     {
-        addConstraint(
-            NSLayoutConstraint(item: pickImageButton, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -10))
     }
 }
