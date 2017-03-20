@@ -59,7 +59,7 @@ class GLPostCollectionViewCell: UICollectionViewCell
         rightArrowView.anchorRightInCenter(withRightPadding: 4, height: imageWidth, width: imageWidth)
         
         titleLabel.sizeToFit()
-        titleLabel.anchorLeftInTop(withLeftPadding: bigHeight/2 + Padding.edgePadding.rawValue, topPadding: Padding.edgePadding.rawValue)
+        titleLabel.anchorLeftInTop(withLeftPadding: bigHeight/2 + Padding.edgePadding.rawValue, topPadding: Padding.edgePadding.rawValue, fillingWidthWithRightPadding: 10)
         
         dateLabel.sizeToFit()
         dateLabel.alignUnderMatchingLeft(titleLabel, topPadding: 0)
