@@ -2,7 +2,8 @@ import UIKit
 
 class ViewPostViewController: UIViewController
 {
-    var scrollView = UIScrollView(frame: CGRect.zero)
+    var scrollView: CardScrollViewWrapperView!
+    var cardView: ViewPostCardView = ViewPostCardView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
