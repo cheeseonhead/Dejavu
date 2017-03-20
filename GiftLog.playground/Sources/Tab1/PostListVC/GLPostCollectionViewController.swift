@@ -23,6 +23,13 @@ class GLPostCollectionViewController: UICollectionViewController, UICollectionVi
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        print("reloading")
+        collectionView?.reloadData()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width - 20, height: 130)
     }

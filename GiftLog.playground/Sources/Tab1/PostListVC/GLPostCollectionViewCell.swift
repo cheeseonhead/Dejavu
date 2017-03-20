@@ -22,7 +22,7 @@ class GLPostCollectionViewCell: UICollectionViewCell
         super.init(frame: frame)
         
         addSubview(shadowView)
-        shadowView.backgroundColor = UIColor.red
+        shadowView.backgroundColor = UIColor.white
         shadowView.addShadow(opacity: 0.5, radius: 4)
         
         addSubview(backView)
