@@ -12,6 +12,7 @@ class AddPostViewController: UIViewController
         
         print(navigationItem)
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonPressed))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonPressed))
         
         view.addSubview(groupView)
         
@@ -28,5 +29,11 @@ class AddPostViewController: UIViewController
     func cancelButtonPressed()
     {
         navigationController?.dismiss(animated: true, completion: nil)
+    }
+    
+    func saveButtonPressed()
+    {
+        let post = groupView.contentView.cardView.generatePost()
+        print(post)
     }
 }

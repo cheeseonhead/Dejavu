@@ -3,7 +3,7 @@ import UIKit
 class AddPostScrollViewWrapperView: UIView
 {
     var scrollView: UIScrollView!
-    var contentView: UIView!
+    var contentView: AddPostCardHolder!
     
     required init()
     {

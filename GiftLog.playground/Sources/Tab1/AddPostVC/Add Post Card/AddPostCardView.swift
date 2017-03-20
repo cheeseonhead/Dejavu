@@ -1,5 +1,5 @@
 import UIKit
-
+import MapKit
 
 class AddPostCardView: UIView
 {
@@ -20,10 +20,12 @@ class AddPostCardView: UIView
     var timeLabel = UILabel()
     
     var time: Date
+    var currentLocation: CLLocationCoordinate2D
     
     required init()
     {
         time = Date()
+        currentLocation = Coordinates.InfiniteLoop3
         super.init(frame: CGRect.zero)
         
         setupSelf()
@@ -37,6 +39,16 @@ class AddPostCardView: UIView
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func generatePost() -> Post
+    {
+        let title = titleField.text ?? ""
+        let description = contentField.text ?? ""
+        let image = pickImageButton.image(for: .normal)
+        
+        let post = Post(title: title, description: description, date: time, image: image, location: currentLocation)
+        return post
     }
 }
 
@@ -128,9 +140,6 @@ extension AddPostCardView
     
     func setupTemp()
     {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM-dd-yyyy HH:mm"
-        
-        timeLabel.text = formatter.string(from: time)
+        timeLabel.text = Post.dateFormatter.string(from: time)
     }
 }
