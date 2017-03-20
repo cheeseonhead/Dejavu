@@ -19,8 +19,11 @@ class AddPostCardView: UIView
     var contentField = UITextView()
     var timeLabel = UILabel()
     
+    var time: Date
+    
     required init()
     {
+        time = Date()
         super.init(frame: CGRect.zero)
         
         setupSelf()
@@ -125,6 +128,9 @@ extension AddPostCardView
     
     func setupTemp()
     {
-        timeLabel.text = "Mar. 23, 2017 20:39"
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM-dd-yyyy HH:mm"
+        
+        timeLabel.text = formatter.string(from: time)
     }
 }
