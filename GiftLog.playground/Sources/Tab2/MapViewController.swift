@@ -18,6 +18,12 @@ class MapViewController: UIViewController, MKMapViewDelegate
         
         mapView.delegate = self
         view.addSubview(mapView)
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        mapView.removeAnnotations(mapView.annotations)
         addAnnotations(from: DummyData.existingPosts)
     }
     
