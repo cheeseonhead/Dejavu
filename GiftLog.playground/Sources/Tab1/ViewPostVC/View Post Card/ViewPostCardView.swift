@@ -55,16 +55,29 @@ class ViewPostCardContentView: UIView
     
     func setupBlurImage()
     {
-        addSubview(blurImage)
+        let maskView = UIView()
+        maskView.translatesAutoresizingMaskIntoConstraints = false
+        maskView.clipsToBounds = true
+        addSubview(maskView)
         
-        let constraints = [
-            NSLayoutConstraint(item: blurImage, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: blurImage, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: blurImage, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: blurImage, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 150)
+        var constraints = [
+            NSLayoutConstraint(item: maskView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: maskView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: maskView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: maskView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 150)
         ]
         
         addConstraints(constraints)
+        
+        maskView.addSubview(blurImage)
+        
+        constraints = [
+            NSLayoutConstraint(item: blurImage, attribute: .width, relatedBy: .equal, toItem: maskView, attribute: .width, multiplier: 2.0, constant: 0),
+            NSLayoutConstraint(item: blurImage, attribute: .centerX, relatedBy: .equal, toItem: maskView, attribute: .centerX, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: blurImage, attribute: .centerY, relatedBy: .equal, toItem: maskView, attribute: .centerY, multiplier: 1.0, constant: 0)
+        ]
+        
+        maskView.addConstraints(constraints)
     }
     
     func setupTemp()
@@ -101,7 +114,6 @@ class BlurImage: UIView
     {
         let darkBlur = UIBlurEffect(style: .regular)
         let blurView = UIVisualEffectView(effect: darkBlur)
-        blurView.alpha = 0.8
         blurView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(blurView)
         
