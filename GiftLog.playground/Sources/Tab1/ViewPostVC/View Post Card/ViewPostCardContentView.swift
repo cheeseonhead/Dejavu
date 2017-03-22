@@ -4,17 +4,22 @@ class ViewPostCardContentView: UIView
 {
     fileprivate struct Style
     {
-        static let blurImageHeight: CGFloat = 150
+        static let blurImageHeight: CGFloat = 180
         static let thumbNailTopPadding: CGFloat = 20
         static let thumbNailSize: CGFloat = 200
         static let thumbToTitle: CGFloat = 20
         static let titleToDate: CGFloat = 5
+        static let dateToDesc: CGFloat = 10
+        static let leftPadding: CGFloat = 20
+        static let descToContent: CGFloat = 4
     }
     
     var blurImage = BlurImage()
     var thumbNailView = ThumbNailView()
     var titleLabel = UILabel()
     var dateLabel = UILabel()
+    var descriptionHeader = UILabel()
+    var contentLabel = UILabel()
     
     required init() {
         super.init(frame: CGRect.zero)
@@ -24,6 +29,8 @@ class ViewPostCardContentView: UIView
         setupThumbNail()
         setupTitleLabel()
         setupDateLabel()
+        setupDescriptionHeader()
+        setupContentLabel()
         setupTemp()
     }
     
@@ -83,7 +90,7 @@ class ViewPostCardContentView: UIView
     func setupTitleLabel()
     {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        titleLabel.font = UIFont.preferredFont(forTextStyle: .title1)
         addSubview(titleLabel)
         
         let constraints = [
@@ -109,12 +116,45 @@ class ViewPostCardContentView: UIView
         addConstraints(constraints)
     }
     
+    func setupDescriptionHeader()
+    {
+        descriptionHeader.translatesAutoresizingMaskIntoConstraints = false
+        descriptionHeader.font = UIFont.preferredFont(forTextStyle: .headline)
+        descriptionHeader.textColor = #colorLiteral(red: 0.4588235294, green: 0.3960784314, blue: 0.5254901961, alpha: 1)
+        descriptionHeader.text = "Description"
+        addSubview(descriptionHeader)
+        
+        let constraints = [
+            NSLayoutConstraint(item: descriptionHeader, attribute: .top, relatedBy: .equal, toItem: dateLabel, attribute: .bottom, multiplier: 1.0, constant: Style.dateToDesc),
+            NSLayoutConstraint(item: descriptionHeader, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: Style.leftPadding)
+        ]
+        
+        addConstraints(constraints)
+    }
+
+    func setupContentLabel()
+    {
+        contentLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        contentLabel.numberOfLines = 0
+        addSubview(contentLabel)
+        
+        let constraints = [
+            NSLayoutConstraint(item: contentLabel, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: Style.leftPadding),
+            NSLayoutConstraint(item: contentLabel, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: -Style.leftPadding),
+            NSLayoutConstraint(item: contentLabel, attribute: .top, relatedBy: .equal, toItem: descriptionHeader, attribute: .bottom, multiplier: 1.0, constant: Style.descToContent)
+        ]
+        
+        addConstraints(constraints)
+    }
+    
     func setupTemp()
     {
         addConstraint(NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 1000))
         blurImage.image = UIImage(named: ImageName.dog.rawValue)
         thumbNailView.image = UIImage(named: ImageName.dog.rawValue)
         titleLabel.text = "Tim Cook"
+        contentLabel.text = "I was walking around and saw Tim getting water, then he raised his head and smiled at me. We were 100 meters apart."
         dateLabel.text = Post.dateFormatter.string(from: Date())
     }
 }
