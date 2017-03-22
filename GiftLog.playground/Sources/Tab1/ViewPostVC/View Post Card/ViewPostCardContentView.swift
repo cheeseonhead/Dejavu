@@ -9,9 +9,11 @@ class ViewPostCardContentView: UIView
         static let thumbNailSize: CGFloat = 200
         static let thumbToTitle: CGFloat = 20
         static let titleToDate: CGFloat = 5
-        static let dateToDesc: CGFloat = 10
+        static let sectionSpacing: CGFloat = 10
         static let leftPadding: CGFloat = 20
-        static let descToContent: CGFloat = 4
+        static let descToContent: CGFloat = 0
+        static let headerFont: UIFont = UIFont.preferredFont(forTextStyle: .headline)
+        static let headerColor: UIColor = #colorLiteral(red: 0.4588235294, green: 0.3960784314, blue: 0.5254901961, alpha: 1)
     }
     
     var blurImage = BlurImage()
@@ -20,6 +22,7 @@ class ViewPostCardContentView: UIView
     var dateLabel = UILabel()
     var descriptionHeader = UILabel()
     var contentLabel = UILabel()
+    var mapHeader = UILabel()
     
     required init() {
         super.init(frame: CGRect.zero)
@@ -31,6 +34,7 @@ class ViewPostCardContentView: UIView
         setupDateLabel()
         setupDescriptionHeader()
         setupContentLabel()
+        setupMapHeader()
         setupTemp()
     }
     
@@ -119,13 +123,13 @@ class ViewPostCardContentView: UIView
     func setupDescriptionHeader()
     {
         descriptionHeader.translatesAutoresizingMaskIntoConstraints = false
-        descriptionHeader.font = UIFont.preferredFont(forTextStyle: .headline)
-        descriptionHeader.textColor = #colorLiteral(red: 0.4588235294, green: 0.3960784314, blue: 0.5254901961, alpha: 1)
+        descriptionHeader.font = Style.headerFont
+        descriptionHeader.textColor = Style.headerColor
         descriptionHeader.text = "Description"
         addSubview(descriptionHeader)
         
         let constraints = [
-            NSLayoutConstraint(item: descriptionHeader, attribute: .top, relatedBy: .equal, toItem: dateLabel, attribute: .bottom, multiplier: 1.0, constant: Style.dateToDesc),
+            NSLayoutConstraint(item: descriptionHeader, attribute: .top, relatedBy: .equal, toItem: dateLabel, attribute: .bottom, multiplier: 1.0, constant: Style.sectionSpacing),
             NSLayoutConstraint(item: descriptionHeader, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: Style.leftPadding)
         ]
         
@@ -143,6 +147,22 @@ class ViewPostCardContentView: UIView
             NSLayoutConstraint(item: contentLabel, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: Style.leftPadding),
             NSLayoutConstraint(item: contentLabel, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: -Style.leftPadding),
             NSLayoutConstraint(item: contentLabel, attribute: .top, relatedBy: .equal, toItem: descriptionHeader, attribute: .bottom, multiplier: 1.0, constant: Style.descToContent)
+        ]
+        
+        addConstraints(constraints)
+    }
+    
+    func setupMapHeader()
+    {
+        mapHeader.translatesAutoresizingMaskIntoConstraints = false
+        mapHeader.font = Style.headerFont
+        mapHeader.textColor = Style.headerColor
+        mapHeader.text = "Location"
+        addSubview(mapHeader)
+        
+        let constraints = [
+            NSLayoutConstraint(item: mapHeader, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: Style.leftPadding),
+            NSLayoutConstraint(item: mapHeader, attribute: .top, relatedBy: .equal, toItem: contentLabel, attribute: .bottom, multiplier: 1.0, constant: Style.sectionSpacing)
         ]
         
         addConstraints(constraints)
