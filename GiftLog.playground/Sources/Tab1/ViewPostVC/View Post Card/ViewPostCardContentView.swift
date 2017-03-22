@@ -8,11 +8,13 @@ class ViewPostCardContentView: UIView
         static let thumbNailTopPadding: CGFloat = 20
         static let thumbNailSize: CGFloat = 200
         static let thumbToTitle: CGFloat = 20
+        static let titleToDate: CGFloat = 5
     }
     
     var blurImage = BlurImage()
     var thumbNailView = ThumbNailView()
     var titleLabel = UILabel()
+    var dateLabel = UILabel()
     
     required init() {
         super.init(frame: CGRect.zero)
@@ -21,6 +23,7 @@ class ViewPostCardContentView: UIView
         setupBlurImage()
         setupThumbNail()
         setupTitleLabel()
+        setupDateLabel()
         setupTemp()
     }
     
@@ -91,11 +94,27 @@ class ViewPostCardContentView: UIView
         addConstraints(constraints)
     }
     
+    func setupDateLabel()
+    {
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        dateLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
+        dateLabel.textColor = #colorLiteral(red: 0.6078431373, green: 0.6392156863, blue: 0.6745098039, alpha: 1)
+        addSubview(dateLabel)
+        
+        let constraints = [
+            NSLayoutConstraint(item: dateLabel, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: dateLabel, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1.0, constant: Style.titleToDate)
+        ]
+        
+        addConstraints(constraints)
+    }
+    
     func setupTemp()
     {
         addConstraint(NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 1000))
         blurImage.image = UIImage(named: ImageName.dog.rawValue)
         thumbNailView.image = UIImage(named: ImageName.dog.rawValue)
         titleLabel.text = "Tim Cook"
+        dateLabel.text = Post.dateFormatter.string(from: Date())
     }
 }
