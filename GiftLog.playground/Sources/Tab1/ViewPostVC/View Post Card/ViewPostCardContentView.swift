@@ -7,10 +7,12 @@ class ViewPostCardContentView: UIView
         static let blurImageHeight: CGFloat = 150
         static let thumbNailTopPadding: CGFloat = 20
         static let thumbNailSize: CGFloat = 200
+        static let thumbToTitle: CGFloat = 20
     }
     
     var blurImage = BlurImage()
     var thumbNailView = ThumbNailView()
+    var titleLabel = UILabel()
     
     required init() {
         super.init(frame: CGRect.zero)
@@ -18,6 +20,7 @@ class ViewPostCardContentView: UIView
         setupSelf()
         setupBlurImage()
         setupThumbNail()
+        setupTitleLabel()
         setupTemp()
     }
     
@@ -74,10 +77,25 @@ class ViewPostCardContentView: UIView
         addConstraints(constraints)
     }
     
+    func setupTitleLabel()
+    {
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        addSubview(titleLabel)
+        
+        let constraints = [
+            NSLayoutConstraint(item: titleLabel, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal, toItem: thumbNailView, attribute: .bottom, multiplier: 1.0, constant: Style.thumbToTitle)
+        ]
+        
+        addConstraints(constraints)
+    }
+    
     func setupTemp()
     {
         addConstraint(NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 1000))
         blurImage.image = UIImage(named: ImageName.dog.rawValue)
         thumbNailView.image = UIImage(named: ImageName.dog.rawValue)
+        titleLabel.text = "Tim Cook"
     }
 }
