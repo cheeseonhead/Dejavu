@@ -3,7 +3,9 @@ import UIKit
 class ViewPostViewController: UIViewController
 {
     var scrollView: CardScrollViewWrapperView!
-    var cardView: ViewPostCardView = ViewPostCardView()
+    var cardView: ViewPostCardView!
+    
+    var post: Post!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -11,6 +13,7 @@ class ViewPostViewController: UIViewController
         navigationItem.title = "Post"
         view.backgroundColor = UIColor.brown
         
+        cardView = ViewPostCardView(with: post)
         scrollView = CardScrollViewWrapperView(cardView: cardView)
         
         view.addSubview(scrollView)

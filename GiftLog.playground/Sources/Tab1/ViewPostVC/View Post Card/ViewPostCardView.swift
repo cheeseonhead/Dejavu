@@ -2,9 +2,12 @@ import UIKit
 
 class ViewPostCardView: CardView
 {
-    var contentView = ViewPostCardContentView()
+    var post: Post
     
-    required init() {
+    var contentView: ViewPostCardContentView!
+    
+    required init(with post: Post) {
+        self.post = post
         super.init()
         
         setupContentView()
@@ -14,8 +17,13 @@ class ViewPostCardView: CardView
         fatalError("init(coder:) has not been implemented")
     }
     
+    required init() {
+        fatalError("init() has not been implemented")
+    }
+    
     func setupContentView()
     {
+        contentView = ViewPostCardContentView(with: post)
         addSubview(contentView)
         
         let constraints = [

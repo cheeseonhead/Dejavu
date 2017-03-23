@@ -56,6 +56,8 @@ class GLPostCollectionViewController: UICollectionViewController, UICollectionVi
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         let viewPostViewController = ViewPostViewController(nibName: nil, bundle: nil)
+        let count = DummyData.existingPosts.count
+        viewPostViewController.post = DummyData.existingPosts[count - indexPath.row - 1]
         viewPostViewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(viewPostViewController, animated: true)
     }

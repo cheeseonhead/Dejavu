@@ -1,4 +1,5 @@
 import UIKit
+import MapKit
 
 class ViewPostCardContentView: UIView
 {
@@ -14,7 +15,10 @@ class ViewPostCardContentView: UIView
         static let descToContent: CGFloat = 0
         static let headerFont: UIFont = UIFont.preferredFont(forTextStyle: .headline)
         static let headerColor: UIColor = #colorLiteral(red: 0.4588235294, green: 0.3960784314, blue: 0.5254901961, alpha: 1)
+        static let mapHeight: CGFloat = 200
     }
+    
+    var post: Post
     
     var blurImage = BlurImage()
     var thumbNailView = ThumbNailView()
@@ -24,7 +28,10 @@ class ViewPostCardContentView: UIView
     var contentLabel = UILabel()
     var mapHeader = UILabel()
     
-    required init() {
+    var mapVC = MapViewController()
+    
+    required init(with post:Post) {
+        self.post = post
         super.init(frame: CGRect.zero)
         
         setupSelf()
@@ -35,6 +42,7 @@ class ViewPostCardContentView: UIView
         setupDescriptionHeader()
         setupContentLabel()
         setupMapHeader()
+        setupMapVC()
         setupTemp()
     }
     
@@ -163,6 +171,26 @@ class ViewPostCardContentView: UIView
         let constraints = [
             NSLayoutConstraint(item: mapHeader, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: Style.leftPadding),
             NSLayoutConstraint(item: mapHeader, attribute: .top, relatedBy: .equal, toItem: contentLabel, attribute: .bottom, multiplier: 1.0, constant: Style.sectionSpacing)
+        ]
+        
+        addConstraints(constraints)
+    }
+    
+    func setupMapVC()
+    {
+        mapVC.view.translatesAutoresizingMaskIntoConstraints = false
+        mapVC.addAnnotations(from: [post])
+        
+        let latDelta = 0.0045
+        let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
+        mapVC.centerMap(at: post.location, withSpan: span)
+        addSubview(mapVC.view)
+        
+        let constraints = [
+            NSLayoutConstraint(item: mapVC.view, attribute: .top, relatedBy: .equal, toItem: mapHeader, attribute: .bottom, multiplier: 1.0, constant: Style.descToContent),
+            NSLayoutConstraint(item: mapVC.view, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: Style.leftPadding),
+            NSLayoutConstraint(item: mapVC.view, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: -Style.leftPadding),
+            NSLayoutConstraint(item: mapVC.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: Style.mapHeight)
         ]
         
         addConstraints(constraints)
