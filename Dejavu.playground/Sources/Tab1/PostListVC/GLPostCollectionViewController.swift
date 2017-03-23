@@ -1,4 +1,5 @@
 import UIKit
+import MapKit
 
 class GLPostCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout
 {
@@ -74,6 +75,17 @@ class GLPostCollectionViewController: UICollectionViewController, UICollectionVi
     
     func postsSortedInDistanceOrder(posts: [Post]) -> [Post]
     {
-        return posts
+        let result = posts.sorted(by: postSortByDistance)
+        
+        return result
+    }
+    
+    func postSortByDistance(_ post1: Post, _ post2: Post) -> Bool
+    {
+        let current = CLLocation(latitude: Coordinates.CurrentLocation.latitude, longitude: Coordinates.CurrentLocation.longitude)
+        let loc1 = CLLocation(latitude: post1.location.latitude, longitude: post1.location.longitude)
+        let loc2 = CLLocation(latitude: post2.location.latitude, longitude: post2.location.longitude)
+        
+        return loc1.distance(from: current) > loc2.distance(from: current)
     }
 }
