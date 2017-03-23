@@ -2,6 +2,8 @@ import UIKit
 
 class GLPostCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout
 {
+    var postInDistanceOrder: [Post]!
+    
     required init()
     {
         let layout = UICollectionViewFlowLayout()
@@ -28,6 +30,7 @@ class GLPostCollectionViewController: UICollectionViewController, UICollectionVi
         super.viewWillAppear(animated)
         print("reloading")
         collectionView?.reloadData()
+        postInDistanceOrder = self.postsSortedInDistanceOrder(posts: DummyData.existingPosts)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -42,8 +45,8 @@ class GLPostCollectionViewController: UICollectionViewController, UICollectionVi
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostCell", for: indexPath) as! GLPostCollectionViewCell
         
-        let count = DummyData.existingPosts.count
-        let currentPost = DummyData.existingPosts[count - indexPath.row - 1]
+        let count = postInDistanceOrder.count
+        let currentPost = postInDistanceOrder[count - indexPath.row - 1]
         
         cell.imageView.image = currentPost.image
         cell.titleLabel.text = currentPost.title
@@ -56,8 +59,8 @@ class GLPostCollectionViewController: UICollectionViewController, UICollectionVi
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         let viewPostViewController = ViewPostViewController(nibName: nil, bundle: nil)
-        let count = DummyData.existingPosts.count
-        viewPostViewController.post = DummyData.existingPosts[count - indexPath.row - 1]
+        let count = postInDistanceOrder.count
+        viewPostViewController.post = postInDistanceOrder[count - indexPath.row - 1]
         viewPostViewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(viewPostViewController, animated: true)
     }
@@ -67,5 +70,10 @@ class GLPostCollectionViewController: UICollectionViewController, UICollectionVi
         let addPostViewController = AddPostNavigationController(nibName: nil, bundle: nil)
         present(addPostViewController, animated: true, completion: nil)
 //        navigationController?.pushViewController(addPostViewController, animated: true)
+    }
+    
+    func postsSortedInDistanceOrder(posts: [Post]) -> [Post]
+    {
+        return posts
     }
 }
