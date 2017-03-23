@@ -2,9 +2,16 @@ import UIKit
 import MapKit
 
 
+protocol MapViewControllerDelegate: class
+{
+    func posts() -> [Post]
+}
+
+
 class MapViewController: UIViewController, MKMapViewDelegate
 {
     var initialSetup = true
+    weak var delegate: MapViewControllerDelegate?
     
     var mapView: MKMapView = {
         let mapV = MKMapView()
@@ -24,7 +31,7 @@ class MapViewController: UIViewController, MKMapViewDelegate
     {
         super.viewWillAppear(animated)
         mapView.removeAnnotations(mapView.annotations)
-        addAnnotations(from: DummyData.existingPosts)
+        addAnnotations(from: delegate?.posts() ?? [])
     }
     
     override func viewDidLayoutSubviews()

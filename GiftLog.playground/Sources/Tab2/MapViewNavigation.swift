@@ -24,6 +24,7 @@ class MapViewNavigationController: UINavigationController
     
     func setupMapVC()
     {
+        mapVC.delegate = self
         pushViewController(mapVC, animated: false)
         
         let latDelta = 0.0045
@@ -31,5 +32,13 @@ class MapViewNavigationController: UINavigationController
         let center = Coordinates.ApplePark
         
         mapVC.centerMap(at: center, withSpan: span)
+    }
+}
+
+extension MapViewNavigationController: MapViewControllerDelegate
+{
+    func posts() -> [Post]
+    {
+        return DummyData.existingPosts
     }
 }
