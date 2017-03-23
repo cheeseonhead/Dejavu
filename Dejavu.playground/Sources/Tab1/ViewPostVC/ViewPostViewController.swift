@@ -10,7 +10,8 @@ class ViewPostViewController: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Post"
+        navigationItem.title = post.title
+        
         view.backgroundColor = UIColor.brown
         
         cardView = ViewPostCardView(with: post)

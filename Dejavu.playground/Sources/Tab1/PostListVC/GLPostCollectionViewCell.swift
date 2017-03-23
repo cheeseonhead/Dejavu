@@ -21,12 +21,13 @@ class GLPostCollectionViewCell: UICollectionViewCell
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(shadowView)
+//        addSubview(shadowView)
         shadowView.backgroundColor = UIColor.white
         shadowView.addShadow(opacity: 0.5, radius: 4)
         
         addSubview(backView)
-        backView.addShadow(opacity: 0.5, radius: 4)
+        backView.layer.borderWidth = 1
+        backView.layer.borderColor = #colorLiteral(red: 0.831372549, green: 0.831372549, blue: 0.831372549, alpha: 1).cgColor
         
         addSubview(imageView)
         

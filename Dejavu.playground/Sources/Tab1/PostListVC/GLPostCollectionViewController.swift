@@ -13,7 +13,7 @@ class GLPostCollectionViewController: UICollectionViewController, UICollectionVi
         
         super.init(collectionViewLayout: layout)
         
-        collectionView?.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        collectionView?.backgroundColor = #colorLiteral(red: 0.9529411765, green: 0.9529411765, blue: 0.9607843137, alpha: 1)
         collectionView?.register(GLPostCollectionViewCell.self, forCellWithReuseIdentifier: "PostCell")
         collectionView?.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         

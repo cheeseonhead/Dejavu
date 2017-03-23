@@ -15,7 +15,7 @@ class CardView: UIView
         
         layer.cornerRadius = Style.cornerRadius
         
-        addDefaultShadow()
+        // addDefaultShadow()
     }
     
     required init?(coder aDecoder: NSCoder) {
