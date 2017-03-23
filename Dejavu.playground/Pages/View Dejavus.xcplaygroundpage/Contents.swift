@@ -12,6 +12,6 @@ PlaygroundPage.current.liveView = tabBarController
 
 var coder = CLGeocoder()
 
-coder.geocodeAddressString("No. 321 Zhishan Road Section 2 Shihlin District, Taipei City 111 Taiwan") { (placeMark, error) in
+coder.geocodeAddressString("Apple Inc. 2 Infinite Loop Cupertino, CA 95014-2083 United States") { (placeMark, error) in
     print(placeMark ?? "")
 }

@@ -24,6 +24,7 @@ enum ImageName: String
     case placeHolder = "placeholder.png"
     case moonWindow = "moon-window.jpg"
     case rightInCircle = "rightInCircle.png"
+    case applePark = "appleParkInside.jpg"
 }
 
 public struct Coordinates
@@ -42,7 +43,9 @@ struct DummyData
 {
     static var existingPosts = [
         Post(title: "White Hallway", description: "I looked around me, there were pale white walls on both sides of the hallway. I raised my head, and saw a little window. The moon was shining brightly, and windowsills casted a cross shadow on the floor. I swear I've dreamt this before.",date: Post.dateFormatter.date(from: "2014-09-08 22:56")!, image: UIImage(named: ImageName.moonWindow.rawValue), location: Coordinates.WesleyGHS),
-        Post(title: "Tim Cook", description: "I was walking around and saw Tim getting water, then he raised his head and smiled at me. We were 100 meters apart.",date: Post.dateFormatter.date(from: "2017-03-25 18:56")!, image: UIImage(named: ImageName.dog.rawValue), location: Coordinates.InfiniteLoop2),
+        
+        Post(title: "Yelling Man", description: "Walking from one session to another. There was this man wearing glasses, and a notebook in his left hand walking down in my direction. He seems to be in a hurry. He wanted to check time, so he took out his phone. That moment I knew I've seen this before, and like I predicted, he stomped his foot in rage and yelled, \"I'm late again!\". I've never seen this man before.",date: Post.dateFormatter.date(from: "2016-06-09 12:29")!, image: UIImage(named: ImageName.applePark.rawValue), location: Coordinates.ApplePark),
+        
         Post(title: "Tim Cook", description: "I was walking around and saw Tim getting water, then he raised his head and smiled at me. We were 100 meters apart.",date: Post.dateFormatter.date(from: "2017-03-25 18:56")!, image: UIImage(named: ImageName.winter.rawValue), location: Coordinates.InfiniteLoop3),
         Post(title: "Tim Cook", description: "I was walking around and saw Tim getting water, then he raised his head and smiled at me. We were 100 meters apart.",date: Post.dateFormatter.date(from: "2017-03-25 18:56")!, image: UIImage(named: ImageName.winter.rawValue), location: Coordinates.InfiniteLoop1),
         Post(title: "Tim Cook", description: "I was walking around and saw Tim getting water, then he raised his head and smiled at me. We were 100 meters apart.",date: Post.dateFormatter.date(from: "2017-03-25 18:56")!, image: UIImage(named: ImageName.winter.rawValue), location: Coordinates.InfiniteLoop1)
