@@ -26,7 +26,7 @@ class AddPostCardView: CardView
     required init()
     {
         time = Date()
-        currentLocation = Coordinates.InfiniteLoop5
+        currentLocation = Coordinates.CurrentLocation
         super.init()
         
         setupSelf()
