@@ -32,7 +32,7 @@ public struct Coordinates
     public static let InfiniteLoop3 = CLLocationCoordinate2D(latitude: 37.33311010, longitude: -122.02941910)
     public static let InfiniteLoop5 = CLLocationCoordinate2D(latitude: 37.331660, longitude: -122.028961)
     public static let Studio65 = CLLocationCoordinate2D(latitude: 43.649094, longitude: -79.388503)
-    public static var CurrentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 37.331660, longitude: -122.028961)
+    public static var CurrentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 37.331863, longitude: -122.029524)
 }
 
 struct DummyData
