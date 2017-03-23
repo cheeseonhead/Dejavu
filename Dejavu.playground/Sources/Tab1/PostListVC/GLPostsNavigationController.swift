@@ -11,8 +11,8 @@ class GLPostsNavigationController: UINavigationController
         let image = UIImage(imageLiteralResourceName: ImageName.savingBook.rawValue)
         self.tabBarItem = UITabBarItem(title: TitleConstant.postListVC.rawValue, image:image, selectedImage: nil)
         
-        navigationBar.barStyle = .blackOpaque
-        navigationBar.barTintColor = #colorLiteral(red: 0.4588235294, green: 0.3960784314, blue: 0.5254901961, alpha: 1)
+        navigationBar.barStyle = .blackTranslucent
+        navigationBar.barTintColor = #colorLiteral(red: 0.9098039216, green: 0.9490196078, blue: 0.9921568627, alpha: 1)
         navigationBar.tintColor = UIColor.white
     }
     

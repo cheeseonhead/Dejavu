@@ -4,7 +4,7 @@ import UIKit
 import PlaygroundSupport
 import MapKit
 
-Coordinates.CurrentLocation = Coordinates.WesleyGHS
+Coordinates.CurrentLocation = Coordinates.ApplePark
 
 let tabBarController = GLTabBarController()
 

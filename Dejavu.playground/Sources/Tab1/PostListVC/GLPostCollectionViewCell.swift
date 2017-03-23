@@ -9,7 +9,7 @@ class GLPostCollectionViewCell: UICollectionViewCell
     var backView: UIView = {
         var view = UIView()
         view.layer.cornerRadius = 5
-        view.backgroundColor = #colorLiteral(red: 0.862745098, green: 0.8431372549, blue: 0.7215686275, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         return view
     }()
     
