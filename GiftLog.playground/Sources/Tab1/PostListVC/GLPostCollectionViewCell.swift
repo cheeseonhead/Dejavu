@@ -16,7 +16,7 @@ class GLPostCollectionViewCell: UICollectionViewCell
     var titleLabel = UILabel()
     var dateLabel = UILabel()
     var descriptionLabel = UILabel()
-    var rightArrowView = UIImageView(image: UIImage(named: "rightInCircle.png"))
+    var rightArrowView = UIImageView(image: UIImage(named: ImageName.rightInCircle.rawValue))
     
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -3,16 +3,31 @@ import MapKit
 
 class PostAnnotation: NSObject, MKAnnotation
 {
-    var coordinate: CLLocationCoordinate2D
-    var title: String?
-    var subtitle: String?
-    var thumbNail: UIImage?
+    var coordinate: CLLocationCoordinate2D {
+        get {
+            return post.location
+        }
+    }
+    var title: String? {
+        get {
+            return post.title
+        }
+    }
+    var subtitle: String? {
+        get {
+            return post.description
+        }
+    }
+    var thumbNail: UIImage? {
+        get {
+            return post.image
+        }
+    }
     
-    init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String, thumbNail: UIImage)
+    var post: Post
+    
+    init(post: Post)
     {
-        self.coordinate = coordinate
-        self.title = title
-        self.subtitle = subtitle
-        self.thumbNail = thumbNail
+        self.post = post
     }
 }

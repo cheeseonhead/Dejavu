@@ -16,6 +16,7 @@ class MapViewNavigationController: UINavigationController
         
         navigationBar.barStyle = .blackOpaque
         navigationBar.barTintColor = #colorLiteral(red: 0.4588235294, green: 0.3960784314, blue: 0.5254901961, alpha: 1)
+        navigationBar.tintColor = UIColor.white
     }
     
     required init?(coder aDecoder: NSCoder) {

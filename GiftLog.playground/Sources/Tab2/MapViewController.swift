@@ -11,6 +11,7 @@ protocol MapViewControllerDelegate: class
 class MapViewController: UIViewController, MKMapViewDelegate
 {
     var initialSetup = true
+    var allowsCallout = true
     weak var delegate: MapViewControllerDelegate?
     
     var mapView: MKMapView = {
@@ -63,6 +64,8 @@ class MapViewController: UIViewController, MKMapViewDelegate
         }
         
         postAnnotationView?.imageView.image = postAnnotation.thumbNail
+        postAnnotationView?.delegate = self
+        postAnnotationView?.canShowCallout = allowsCallout
         
         return postAnnotationView
     }
@@ -84,9 +87,20 @@ extension MapViewController
     func addAnnotations(from posts: [Post])
     {
         for post in posts {
-            let annotation = PostAnnotation.init(coordinate: post.location, title: post.title, subtitle: post.description, thumbNail: post.image!)
+            let annotation = PostAnnotation.init(post: post)
             
             mapView.addAnnotation(annotation)
         }
+    }
+}
+
+extension MapViewController: PostAnnotationViewDelegate
+{
+    func detailButtonTapped(view: PostAnnotationView)
+    {
+        let viewPostViewController = ViewPostViewController(nibName: nil, bundle: nil)
+        viewPostViewController.post = (view.annotation as! PostAnnotation).post
+        viewPostViewController.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(viewPostViewController, animated: true)
     }
 }

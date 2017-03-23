@@ -23,6 +23,7 @@ enum ImageName: String
     case camera = "camera.png"
     case placeHolder = "placeholder.png"
     case moonWindow = "moon-window.jpg"
+    case rightInCircle = "rightInCircle.png"
 }
 
 public struct Coordinates

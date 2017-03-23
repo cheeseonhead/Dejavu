@@ -183,6 +183,7 @@ class ViewPostCardContentView: UIView
     
     func setupMapVC()
     {
+        mapVC.allowsCallout = false
         mapVC.view.translatesAutoresizingMaskIntoConstraints = false
         mapVC.addAnnotations(from: [post])
         
