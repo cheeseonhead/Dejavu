@@ -29,7 +29,7 @@ class MapViewNavigationController: UINavigationController
         
         let latDelta = 0.0045
         let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
-        let center = Coordinates.ApplePark
+        let center = Coordinates.CurrentLocation
         
         mapVC.centerMap(at: center, withSpan: span)
     }
