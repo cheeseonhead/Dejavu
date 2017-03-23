@@ -24,13 +24,15 @@ enum ImageName: String
     case placeHolder = "placeholder.png"
 }
 
-struct Coordinates
+public struct Coordinates
 {
-    static let ApplePark = CLLocationCoordinate2D(latitude: 37.331863, longitude: -122.029524)
-    static let InfiniteLoop1 = CLLocationCoordinate2D(latitude: 37.331413, longitude: -122.030484)
-    static let InfiniteLoop2 = CLLocationCoordinate2D(latitude: 37.33270825, longitude: -122.03030010)
-    static let InfiniteLoop3 = CLLocationCoordinate2D(latitude: 37.33311010, longitude: -122.02941910)
-    static let InfiniteLoop5 = CLLocationCoordinate2D(latitude: 37.331660, longitude: -122.028961)
+    public static let ApplePark = CLLocationCoordinate2D(latitude: 37.331863, longitude: -122.029524)
+    public static let InfiniteLoop1 = CLLocationCoordinate2D(latitude: 37.331413, longitude: -122.030484)
+    public static let InfiniteLoop2 = CLLocationCoordinate2D(latitude: 37.33270825, longitude: -122.03030010)
+    public static let InfiniteLoop3 = CLLocationCoordinate2D(latitude: 37.33311010, longitude: -122.02941910)
+    public static let InfiniteLoop5 = CLLocationCoordinate2D(latitude: 37.331660, longitude: -122.028961)
+    public static let Studio65 = CLLocationCoordinate2D(latitude: 43.649094, longitude: -79.388503)
+    public static var CurrentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 37.331660, longitude: -122.028961)
 }
 
 struct DummyData
