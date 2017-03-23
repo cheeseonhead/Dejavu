@@ -21,7 +21,7 @@ class CardScrollViewWrapperView: UIView
     
     func selfSetup()
     {
-        backgroundColor = #colorLiteral(red: 0.9098039216, green: 0.9490196078, blue: 0.9921568627, alpha: 1)
+        backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9529411765, blue: 0.9607843137, alpha: 1)
         translatesAutoresizingMaskIntoConstraints = false
     }
     
