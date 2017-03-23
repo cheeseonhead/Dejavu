@@ -4,6 +4,8 @@ import UIKit
 import PlaygroundSupport
 import MapKit
 
+Coordinates.CurrentLocation = Coordinates.Studio65
+
 let tabBarController = GLTabBarController()
 
 PlaygroundPage.current.liveView = tabBarController
