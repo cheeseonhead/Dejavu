@@ -61,15 +61,10 @@ class MapViewController: UIViewController, MKMapViewDelegate
     }
 }
 
-fileprivate extension MapViewController
+extension MapViewController
 {
     func setupMapView()
-    {
-        let latDelta = 0.0045
-        let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
-        let center = Coordinates.ApplePark
-        
-        centerMap(at: center, withSpan: span)
+    {   
     }
     
     func centerMap(at center:CLLocationCoordinate2D, withSpan span:MKCoordinateSpan)
