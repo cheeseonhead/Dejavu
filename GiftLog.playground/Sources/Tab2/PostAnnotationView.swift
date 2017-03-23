@@ -16,6 +16,12 @@ class PostAnnotationView: MKPinAnnotationView
         
         canShowCallout = true
         
+        setupImageView()
+        
+    }
+    
+    func setupImageView()
+    {
         leftCalloutAccessoryView = imageView
         
         imageView.set(position: CGPoint(x: 0, y: 0), edgeLength: 46)
