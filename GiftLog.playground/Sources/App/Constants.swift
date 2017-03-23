@@ -11,7 +11,7 @@ enum Padding: CGFloat
 enum TitleConstant: String
 {
     case mapVC = "Map"
-    case postListVC = "Dejavu"
+    case postListVC = "Déjà vu"
 }
 
 enum ImageName: String
