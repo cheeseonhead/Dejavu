@@ -16,6 +16,7 @@ class ViewPostCardContentView: UIView
         static let headerFont: UIFont = UIFont.preferredFont(forTextStyle: .headline)
         static let headerColor: UIColor = #colorLiteral(red: 0.4588235294, green: 0.3960784314, blue: 0.5254901961, alpha: 1)
         static let mapHeight: CGFloat = 200
+        static let latDelta: Double = 0.0025
     }
     
     var post: Post
@@ -43,7 +44,6 @@ class ViewPostCardContentView: UIView
         setupContentLabel()
         setupMapHeader()
         setupMapVC()
-        setupTemp()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -74,6 +74,7 @@ class ViewPostCardContentView: UIView
         
         addConstraints(constraints)
         
+        blurImage.image = post.image
         maskView.addSubview(blurImage)
         
         constraints = [
@@ -87,6 +88,7 @@ class ViewPostCardContentView: UIView
     
     func setupThumbNail()
     {
+        thumbNailView.image = post.image
         addSubview(thumbNailView)
         
         let constraints = [
@@ -103,6 +105,7 @@ class ViewPostCardContentView: UIView
     {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.font = UIFont.preferredFont(forTextStyle: .title1)
+        titleLabel.text = post.title
         addSubview(titleLabel)
         
         let constraints = [
@@ -118,6 +121,7 @@ class ViewPostCardContentView: UIView
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         dateLabel.textColor = #colorLiteral(red: 0.6078431373, green: 0.6392156863, blue: 0.6745098039, alpha: 1)
+        dateLabel.text = Post.dateFormatter.string(from: post.date)
         addSubview(dateLabel)
         
         let constraints = [
@@ -149,6 +153,7 @@ class ViewPostCardContentView: UIView
         contentLabel.translatesAutoresizingMaskIntoConstraints = false
         contentLabel.font = UIFont.preferredFont(forTextStyle: .body)
         contentLabel.numberOfLines = 0
+        contentLabel.text = post.description
         addSubview(contentLabel)
         
         let constraints = [
@@ -181,8 +186,7 @@ class ViewPostCardContentView: UIView
         mapVC.view.translatesAutoresizingMaskIntoConstraints = false
         mapVC.addAnnotations(from: [post])
         
-        let latDelta = 0.0045
-        let span = MKCoordinateSpanMake(fabs(latDelta), 0.0)
+        let span = MKCoordinateSpanMake(fabs(Style.latDelta), 0.0)
         mapVC.centerMap(at: post.location, withSpan: span)
         addSubview(mapVC.view)
         
@@ -190,19 +194,10 @@ class ViewPostCardContentView: UIView
             NSLayoutConstraint(item: mapVC.view, attribute: .top, relatedBy: .equal, toItem: mapHeader, attribute: .bottom, multiplier: 1.0, constant: Style.descToContent),
             NSLayoutConstraint(item: mapVC.view, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: Style.leftPadding),
             NSLayoutConstraint(item: mapVC.view, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: -Style.leftPadding),
-            NSLayoutConstraint(item: mapVC.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: Style.mapHeight)
+            NSLayoutConstraint(item: mapVC.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: Style.mapHeight),
+            NSLayoutConstraint(item: mapVC.view, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -Style.leftPadding)
         ]
         
         addConstraints(constraints)
-    }
-    
-    func setupTemp()
-    {
-        addConstraint(NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 1000))
-        blurImage.image = UIImage(named: ImageName.dog.rawValue)
-        thumbNailView.image = UIImage(named: ImageName.dog.rawValue)
-        titleLabel.text = "Tim Cook"
-        contentLabel.text = "I was walking around and saw Tim getting water, then he raised his head and smiled at me. We were 100 meters apart."
-        dateLabel.text = Post.dateFormatter.string(from: Date())
     }
 }
