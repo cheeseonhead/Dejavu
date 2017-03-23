@@ -16,7 +16,7 @@ class ViewPostCardContentView: UIView
         static let headerFont: UIFont = UIFont.preferredFont(forTextStyle: .headline)
         static let headerColor: UIColor = #colorLiteral(red: 0.4588235294, green: 0.3960784314, blue: 0.5254901961, alpha: 1)
         static let mapHeight: CGFloat = 200
-        static let latDelta: Double = 0.0025
+        static let latDelta: Double = 0.001
     }
     
     var post: Post
