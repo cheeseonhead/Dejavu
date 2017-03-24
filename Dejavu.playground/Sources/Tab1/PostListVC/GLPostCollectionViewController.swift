@@ -9,7 +9,7 @@ class GLPostCollectionViewController: UICollectionViewController, UICollectionVi
     {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 10
+        layout.minimumLineSpacing = 8
         
         super.init(collectionViewLayout: layout)
         
