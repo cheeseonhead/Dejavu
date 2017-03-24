@@ -35,7 +35,7 @@ class GLPostCollectionViewController: UICollectionViewController, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 100)
+        return CGSize(width: collectionView.bounds.width, height: 150)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -49,7 +49,7 @@ class GLPostCollectionViewController: UICollectionViewController, UICollectionVi
         let count = postInDistanceOrder.count
         let currentPost = postInDistanceOrder[count - indexPath.row - 1]
         
-//        cell.imageView.image = currentPost.image
+        cell.image = currentPost.image
 //        cell.titleLabel.text = currentPost.title
 //        cell.descriptionLabel.text = currentPost.description
 //        
