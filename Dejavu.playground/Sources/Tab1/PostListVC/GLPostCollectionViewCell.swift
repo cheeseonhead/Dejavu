@@ -5,10 +5,12 @@ class GLPostCollectionViewCell: UICollectionViewCell
     struct Style
     {
         static let verticalPadding: CGFloat = 10
+        static let thumbToTitle: CGFloat = 10
+        static let titleToDate: CGFloat = 5
     }
     
-//    var titleLabel = UILabel()
-//    var dateLabel = UILabel()
+    var titleLabel = UILabel()
+    var dateLabel = UILabel()
 //    var descriptionLabel = UILabel()
 //    var rightArrowView = UIImageView(image: UIImage(named: ImageName.rightInCircle.rawValue))
     
@@ -29,6 +31,8 @@ class GLPostCollectionViewCell: UICollectionViewCell
         setupSelf()
         setupBlurImage()
         setupThumbNail()
+        setupTitleLabel()
+        setupDateLabel()
         setupTemp()
     }
     
@@ -57,11 +61,41 @@ class GLPostCollectionViewCell: UICollectionViewCell
         addSubview(thumbNail)
         
         let constraints = [
-            NSLayoutConstraint(item: thumbNail, attribute: .top, relatedBy: .equal, toItem: blurImage, attribute: .top, multiplier: 1.0, constant: Style.verticalPadding),
-            NSLayoutConstraint(item: thumbNail, attribute: .bottom, relatedBy: .equal, toItem: blurImage, attribute: .bottom, multiplier: 1.0, constant: -Style.verticalPadding),
-            NSLayoutConstraint(item: thumbNail, attribute: .left, relatedBy: .equal, toItem: blurImage, attribute: .left, multiplier: 1.0, constant: 20),
+            NSLayoutConstraint(item: thumbNail, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: Style.verticalPadding),
+            NSLayoutConstraint(item: thumbNail, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -Style.verticalPadding),
+            NSLayoutConstraint(item: thumbNail, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: 20),
             NSLayoutConstraint(item: thumbNail, attribute: .height, relatedBy: .equal, toItem: thumbNail, attribute: .width, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: blurImage, attribute: .right, relatedBy: .equal, toItem: thumbNail, attribute: .right, multiplier: 1.0, constant: -20)
+        ]
+        
+        addConstraints(constraints)
+    }
+    
+    func setupTitleLabel()
+    {
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.textColor = UIColor.black
+        titleLabel.font = UIFont.preferredFont(forTextStyle: .title1)
+        addSubview(titleLabel)
+        
+        let constraints = [
+            NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal, toItem: thumbNail, attribute: .top, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: titleLabel, attribute: .left, relatedBy: .equal, toItem: thumbNail, attribute: .right, multiplier: 1.0, constant: Style.thumbToTitle)
+        ]
+        
+        addConstraints(constraints)
+    }
+    
+    func setupDateLabel()
+    {
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        dateLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
+        dateLabel.textColor = #colorLiteral(red: 0.6078431373, green: 0.6392156863, blue: 0.6745098039, alpha: 1)
+        addSubview(dateLabel)
+        
+        let constraints = [
+            NSLayoutConstraint(item: dateLabel, attribute: .left, relatedBy: .equal, toItem: titleLabel, attribute: .left, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: dateLabel, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1.0, constant: Style.titleToDate)
         ]
         
         addConstraints(constraints)

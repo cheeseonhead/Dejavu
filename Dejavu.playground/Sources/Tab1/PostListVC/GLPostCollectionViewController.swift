@@ -50,10 +50,10 @@ class GLPostCollectionViewController: UICollectionViewController, UICollectionVi
         let currentPost = postInDistanceOrder[count - indexPath.row - 1]
         
         cell.image = currentPost.image
-//        cell.titleLabel.text = currentPost.title
+        cell.titleLabel.text = currentPost.title
 //        cell.descriptionLabel.text = currentPost.description
 //        
-//        cell.dateLabel.text = Post.dateFormatter.string(from: currentPost.date)
+        cell.dateLabel.text = Post.dateFormatter.string(from: currentPost.date)
         return cell
     }
     
