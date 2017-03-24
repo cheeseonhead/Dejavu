@@ -5,7 +5,6 @@ class GLPostCollectionViewCell: UICollectionViewCell
     let imageWidth: CGFloat = 30
     
     var imageView = RoundImageView()
-    var shadowView = RoundView()
     var backView: UIView = {
         var view = UIView()
         view.layer.cornerRadius = 5
@@ -20,10 +19,6 @@ class GLPostCollectionViewCell: UICollectionViewCell
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-//        addSubview(shadowView)
-        shadowView.backgroundColor = UIColor.white
-        shadowView.addShadow(opacity: 0.5, radius: 4)
         
         addSubview(backView)
         backView.layer.borderWidth = 1
@@ -53,7 +48,6 @@ class GLPostCollectionViewCell: UICollectionViewCell
         
         let bigHeight = frame.size.height
         imageView.set(position: CGPoint(x: 0, y:0), edgeLength: bigHeight)
-        shadowView.set(position: CGPoint(x: 0, y: 0), edgeLength: bigHeight)
         
         backView.anchorLeftInCenter(withLeftPadding: bigHeight/2, height: bigHeight - 20, rightPadding: 10)
         

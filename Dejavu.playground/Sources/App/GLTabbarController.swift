@@ -10,7 +10,7 @@ public class GLTabBarController: UITabBarController
         UITabBar.appearance().shadowImage = #colorLiteral(red: 0.831372549, green: 0.831372549, blue: 0.831372549, alpha: 1).as1ptImage()
         
         setBackColor(color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
-        setTintColor(color: #colorLiteral(red: 0.2099874318, green: 0.3203630447, blue: 0.3499233723, alpha: 1))
+        setTintColor(color: AppStyle.TabBarTintColor)
         
         let vc1 = GLPostsNavigationController.init(nibName: nil, bundle: nil)
         let vc2 = MapViewNavigationController.init(nibName: nil, bundle: nil)

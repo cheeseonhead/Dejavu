@@ -6,6 +6,7 @@ struct AppStyle
     static let PostListNavColor = #colorLiteral(red: 0, green: 0.5882352941, blue: 0.5333333333, alpha: 1)
     static let MapNavColor = #colorLiteral(red: 0, green: 0.5882352941, blue: 0.5333333333, alpha: 1)
     static let ScrollBackgroundColor = #colorLiteral(red: 0, green: 0.4117647059, blue: 0.3607843137, alpha: 1)
+    static let TabBarTintColor = #colorLiteral(red: 0, green: 0.5882352941, blue: 0.5333333333, alpha: 1)
 }
 
 enum Padding: CGFloat
