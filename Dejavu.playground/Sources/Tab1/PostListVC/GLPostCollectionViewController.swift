@@ -51,8 +51,8 @@ class GLPostCollectionViewController: UICollectionViewController, UICollectionVi
         
         cell.image = currentPost.image
         cell.titleLabel.text = currentPost.title
-//        cell.descriptionLabel.text = currentPost.description
-//        
+        cell.contentLabel.text = currentPost.description
+        
         cell.dateLabel.text = Post.dateFormatter.string(from: currentPost.date)
         return cell
     }

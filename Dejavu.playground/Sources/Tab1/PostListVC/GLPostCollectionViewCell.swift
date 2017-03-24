@@ -11,8 +11,8 @@ class GLPostCollectionViewCell: UICollectionViewCell
     
     var titleLabel = UILabel()
     var dateLabel = UILabel()
-//    var descriptionLabel = UILabel()
-//    var rightArrowView = UIImageView(image: UIImage(named: ImageName.rightInCircle.rawValue))
+    var contentLabel = UILabel()
+    var rightArrowView = UIImageView(image: UIImage(named: ImageName.rightInCircle.rawValue))
     
     var thumbNail = ThumbNailView()
     var blurImage = BlurImage()
@@ -33,6 +33,8 @@ class GLPostCollectionViewCell: UICollectionViewCell
         setupThumbNail()
         setupTitleLabel()
         setupDateLabel()
+        setupContentLabel()
+        setupRightArrow()
         setupTemp()
     }
     
@@ -96,6 +98,39 @@ class GLPostCollectionViewCell: UICollectionViewCell
         let constraints = [
             NSLayoutConstraint(item: dateLabel, attribute: .left, relatedBy: .equal, toItem: titleLabel, attribute: .left, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: dateLabel, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1.0, constant: Style.titleToDate)
+        ]
+        
+        addConstraints(constraints)
+    }
+    
+    func setupContentLabel()
+    {
+        contentLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        contentLabel.numberOfLines = 3
+        addSubview(contentLabel)
+        
+        let constraints = [
+            NSLayoutConstraint(item: contentLabel, attribute: .left, relatedBy: .equal, toItem: titleLabel, attribute: .left, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: contentLabel, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: -Style.thumbToTitle),
+            NSLayoutConstraint(item: contentLabel, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1.0, constant: Style.thumbToTitle),
+            NSLayoutConstraint(item: contentLabel, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -Style.thumbToTitle)
+        ]
+        
+        addConstraints(constraints)
+    }
+    
+    func setupRightArrow()
+    {
+        rightArrowView.translatesAutoresizingMaskIntoConstraints = false
+        rightArrowView.contentMode = .scaleAspectFit
+        addSubview(rightArrowView)
+        
+        let constraints = [
+            NSLayoutConstraint(item: rightArrowView, attribute: .height, relatedBy: .equal, toItem: rightArrowView, attribute: .width, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: rightArrowView, attribute: .height, relatedBy: .equal, toItem: titleLabel, attribute: .height, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: rightArrowView, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .top, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: rightArrowView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: -Style.thumbToTitle)
         ]
         
         addConstraints(constraints)
