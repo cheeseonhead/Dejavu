@@ -13,6 +13,8 @@ import PlaygroundSupport
  
  You can input the *title*, *description*, and change the *thumbnail* of your entry. The *date* and *location* are automatically determined for you.
  
+ After you tap the `Save` button, your new entry will automatically be shown in the list and on the map. Go ahead, try it out!
+ 
  - Note: The thumbnail feature is not practical to implement in playground, so it was omitted in the demonstration
  
  You can try changing the current location to any of the preset ones, or you can change it to a custom `CLLocationCoordinate2D` coordinate.
