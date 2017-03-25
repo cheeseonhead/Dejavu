@@ -4,7 +4,7 @@ import UIKit
 import PlaygroundSupport
 import MapKit
 
-Coordinates.CurrentLocation = Coordinates.ApplePark
+Coordinates.CurrentLocation = Coordinates.InfiniteLoop3
 
 let tabBarController = GLTabBarController()
 
