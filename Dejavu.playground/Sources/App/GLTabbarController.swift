@@ -2,6 +2,8 @@ import UIKit
 
 public class GLTabBarController: UITabBarController
 {
+    public var showPopup: Bool = false
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
         
@@ -16,6 +18,17 @@ public class GLTabBarController: UITabBarController
         let vc2 = MapViewNavigationController.init(nibName: nil, bundle: nil)
         self.viewControllers = [vc1, vc2]
         self.selectedViewController = vc1
+    }
+    
+    public override func viewDidAppear(_ animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        
+        if (showPopup) {
+            let alertVC = AlertViewController()
+            alertVC.modalPresentationStyle = .overFullScreen
+            present(alertVC, animated: true, completion: nil)
+        }
     }
     
     public func setBackColor(color: UIColor)
