@@ -8,7 +8,7 @@ class AlertViewController: UIViewController
         static let sidePadding: CGFloat = 10
     }
     
-    var alertCard = AlertCard()
+    var alertCard: AlertCard!
     
     override func viewDidLoad()
     {
@@ -40,6 +40,7 @@ class AlertViewController: UIViewController
     
     func setupAlertCard()
     {
+        alertCard = AlertCard(with: DummyData.existingPosts[0])
         view.addSubview(alertCard)
         
         let constraints = [
