@@ -5,5 +5,6 @@
         <page name='View'/>
         <page name='ViewMap'/>
         <page name='AddEntry'/>
+        <page name='References'/>
     </pages>
 </playground>
