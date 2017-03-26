@@ -41,6 +41,7 @@ class AlertViewController: UIViewController
     func setupAlertCard()
     {
         alertCard = AlertCard(with: DummyData.existingPosts[0])
+        alertCard.delegate = self
         view.addSubview(alertCard)
         
         let constraints = [
@@ -50,5 +51,13 @@ class AlertViewController: UIViewController
         ]
         
         view.addConstraints(constraints)
+    }
+}
+
+extension AlertViewController: AlertCardDelegate
+{
+    func dismissButtonTapped()
+    {
+        dismiss(animated: true, completion: nil)
     }
 }

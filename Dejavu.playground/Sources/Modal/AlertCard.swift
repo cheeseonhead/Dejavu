@@ -1,5 +1,10 @@
 import UIKit
 
+protocol AlertCardDelegate: class
+{
+    func dismissButtonTapped()
+}
+
 class AlertCard: CardView
 {
     fileprivate struct Style
@@ -19,6 +24,7 @@ class AlertCard: CardView
     }
     
     var post:Post
+    weak var delegate: AlertCardDelegate?
     
     var blurImage = BlurImage()
     var thumbNailView = ThumbNailView()
@@ -145,6 +151,7 @@ class AlertCard: CardView
         dismissButton.setTitleColor(AppStyle.TabBarTintColor, for: .normal)
         dismissButton.setTitle("Dismiss", for: .normal)
         dismissButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .callout)
+        dismissButton.addTarget(self, action: #selector(dismissTapped), for: .touchUpInside)
         addSubview(dismissButton)
         
         let constraints = [
@@ -154,6 +161,11 @@ class AlertCard: CardView
         ]
         
         addConstraints(constraints)
+    }
+    
+    func dismissTapped()
+    {
+        delegate?.dismissButtonTapped()
     }
     
     required init?(coder aDecoder: NSCoder) {
