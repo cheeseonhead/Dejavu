@@ -9,6 +9,7 @@ class AlertViewController: UIViewController
     }
     
     var alertCard: AlertCard!
+    var post: Post!
     
     override func viewDidLoad()
     {
@@ -40,7 +41,7 @@ class AlertViewController: UIViewController
     
     func setupAlertCard()
     {
-        alertCard = AlertCard(with: DummyData.existingPosts[0])
+        alertCard = AlertCard(with: post)
         alertCard.delegate = self
         view.addSubview(alertCard)
         
@@ -59,5 +60,14 @@ extension AlertViewController: AlertCardDelegate
     func dismissButtonTapped()
     {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func viewButtonTapped()
+    {
+        let viewPostViewController = ViewPostViewController(nibName: nil, bundle: nil)
+        viewPostViewController.post = post
+//        viewPostViewController.hidesBottomBarWhenPushed = true
+//        navigationController?.pushViewController(viewPostViewController, animated: true)
+        present(viewPostViewController, animated: true, completion: nil)
     }
 }

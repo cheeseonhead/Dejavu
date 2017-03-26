@@ -3,6 +3,7 @@ import UIKit
 protocol AlertCardDelegate: class
 {
     func dismissButtonTapped()
+    func viewButtonTapped()
 }
 
 class AlertCard: CardView
@@ -32,6 +33,7 @@ class AlertCard: CardView
     var dateLabel = UILabel()
     var contentLabel = UILabel()
     var dismissButton = UIButton(type: .system)
+    var viewButton = UIButton(type: .system)
     
     required init(with post:Post)
     {
@@ -45,6 +47,7 @@ class AlertCard: CardView
         setupDateLabel()
         setupContentLabel()
         setupDismissButton()
+//        setupViewButton()
     }
     
     func setupSelf()
@@ -157,7 +160,25 @@ class AlertCard: CardView
         let constraints = [
             NSLayoutConstraint(item: dismissButton, attribute: .top, relatedBy: .equal, toItem: contentLabel, attribute: .bottom, multiplier: 1.0, constant: Style.sectionSpacing),
             NSLayoutConstraint(item: dismissButton, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -Style.sectionSpacing),
-            NSLayoutConstraint(item: dismissButton, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: Style.leftPadding)
+//            NSLayoutConstraint(item: dismissButton, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: Style.leftPadding)
+            NSLayoutConstraint(item: dismissButton, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0)
+        ]
+        
+        addConstraints(constraints)
+    }
+    
+    func setupViewButton()
+    {
+        viewButton.translatesAutoresizingMaskIntoConstraints = false
+        viewButton.setTitleColor(AppStyle.TabBarTintColor, for: .normal)
+        viewButton.setTitle("View", for: .normal)
+        viewButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .callout)
+        viewButton.addTarget(self, action: #selector(viewTapped), for: .touchUpInside)
+        addSubview(viewButton)
+        
+        let constraints = [
+            NSLayoutConstraint(item: viewButton, attribute: .top, relatedBy: .equal, toItem: contentLabel, attribute: .bottom, multiplier: 1.0, constant: Style.sectionSpacing),
+            NSLayoutConstraint(item: viewButton, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: -Style.leftPadding)
         ]
         
         addConstraints(constraints)
@@ -166,6 +187,11 @@ class AlertCard: CardView
     func dismissTapped()
     {
         delegate?.dismissButtonTapped()
+    }
+    
+    func viewTapped()
+    {
+        delegate?.viewButtonTapped()
     }
     
     required init?(coder aDecoder: NSCoder) {
