@@ -7,6 +7,13 @@ class AlertCard: CardView
         super.init()
         
         
+        setupSelf()
+    }
+    
+    func setupSelf()
+    {
+        translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
     
     required init?(coder aDecoder: NSCoder) {
