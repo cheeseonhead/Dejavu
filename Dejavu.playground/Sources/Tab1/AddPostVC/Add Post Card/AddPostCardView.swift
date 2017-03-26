@@ -34,8 +34,6 @@ class AddPostCardView: CardView
         setupTitleField()
         setupContentField()
         setupTimeLabel()
-        
-        setupTemp()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -79,8 +77,10 @@ extension AddPostCardView
     
     func setupTitleField()
     {
+        titleField.font = UIFont.preferredFont(forTextStyle: .title1)
         titleField.borderStyle = .roundedRect
         titleField.placeholder = "Title"
+        titleField.sizeToFit()
         titleField.translatesAutoresizingMaskIntoConstraints = false
         addSubview(titleField)
         
@@ -124,6 +124,9 @@ extension AddPostCardView
     func setupTimeLabel()
     {
         timeLabel.translatesAutoresizingMaskIntoConstraints = false
+        timeLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
+        timeLabel.text = Post.dateFormatter.string(from: time)
+        timeLabel.textColor = #colorLiteral(red: 0.6078431373, green: 0.6392156863, blue: 0.6745098039, alpha: 1)
         addSubview(timeLabel)
         
         let constraints = [
@@ -132,10 +135,5 @@ extension AddPostCardView
         ]
         
         addConstraints(constraints)
-    }
-    
-    func setupTemp()
-    {
-        timeLabel.text = Post.dateFormatter.string(from: time)
     }
 }
