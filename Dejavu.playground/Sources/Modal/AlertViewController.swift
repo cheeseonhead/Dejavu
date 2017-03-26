@@ -16,8 +16,8 @@ class AlertViewController: UIViewController
         
         view.backgroundColor = UIColor(white: 0, alpha: 0.8)
         
-        setupAlertMessage()
         setupAlertCard()
+        setupAlertMessage()
     }
     
     func setupAlertMessage()
@@ -32,7 +32,7 @@ class AlertViewController: UIViewController
         
         let constraints = [
             NSLayoutConstraint(item: label, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 100),
+            NSLayoutConstraint(item: label, attribute: .bottom, relatedBy: .equal, toItem: alertCard, attribute: .top, multiplier: 1.0, constant: -20),
         ]
         
         view.addConstraints(constraints)
@@ -47,7 +47,6 @@ class AlertViewController: UIViewController
             NSLayoutConstraint(item: alertCard, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 1.0, constant: -2*Style.sidePadding),
             NSLayoutConstraint(item: alertCard, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: alertCard, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1.0, constant: 0),
-            NSLayoutConstraint(item: alertCard, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: Style.cardHeight)
         ]
         
         view.addConstraints(constraints)

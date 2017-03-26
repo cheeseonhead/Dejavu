@@ -7,7 +7,7 @@ class AlertCard: CardView
         static let blurImageHeight: CGFloat = 100
         static let thumbNailTopPadding: CGFloat = 20
         static let thumbNailSize: CGFloat = 100
-        static let thumbToTitle: CGFloat = 10
+        static let thumbToTitle: CGFloat = 0
         static let titleToDate: CGFloat = 5
         static let sectionSpacing: CGFloat = 10
         static let leftPadding: CGFloat = 20
@@ -25,6 +25,7 @@ class AlertCard: CardView
     var titleLabel = UILabel()
     var dateLabel = UILabel()
     var contentLabel = UILabel()
+    var dismissButton = UIButton(type: .system)
     
     required init(with post:Post)
     {
@@ -37,6 +38,7 @@ class AlertCard: CardView
         setupTitleLabel()
         setupDateLabel()
         setupContentLabel()
+        setupDismissButton()
     }
     
     func setupSelf()
@@ -132,6 +134,23 @@ class AlertCard: CardView
             NSLayoutConstraint(item: contentLabel, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: Style.leftPadding),
             NSLayoutConstraint(item: contentLabel, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: -Style.leftPadding),
             NSLayoutConstraint(item: contentLabel, attribute: .top, relatedBy: .equal, toItem: dateLabel, attribute: .bottom, multiplier: 1.0, constant: Style.descToContent)
+        ]
+        
+        addConstraints(constraints)
+    }
+ 
+    func setupDismissButton()
+    {
+        dismissButton.translatesAutoresizingMaskIntoConstraints = false
+        dismissButton.setTitleColor(AppStyle.TabBarTintColor, for: .normal)
+        dismissButton.setTitle("Dismiss", for: .normal)
+        dismissButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .callout)
+        addSubview(dismissButton)
+        
+        let constraints = [
+            NSLayoutConstraint(item: dismissButton, attribute: .top, relatedBy: .equal, toItem: contentLabel, attribute: .bottom, multiplier: 1.0, constant: Style.sectionSpacing),
+            NSLayoutConstraint(item: dismissButton, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -Style.sectionSpacing),
+            NSLayoutConstraint(item: dismissButton, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: Style.leftPadding)
         ]
         
         addConstraints(constraints)
