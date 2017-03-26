@@ -14,7 +14,7 @@ class ViewPostCardContentView: UIView
         static let leftPadding: CGFloat = 20
         static let descToContent: CGFloat = 0
         static let headerFont: UIFont = UIFont.preferredFont(forTextStyle: .headline)
-        static let headerColor: UIColor = #colorLiteral(red: 0.4588235294, green: 0.3960784314, blue: 0.5254901961, alpha: 1)
+        static let headerColor: UIColor = AppStyle.TabBarTintColor
         static let mapHeight: CGFloat = 200
         static let latDelta: Double = 0.001
     }
