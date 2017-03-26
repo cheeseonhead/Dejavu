@@ -29,7 +29,6 @@ class GLPostCollectionViewController: UICollectionViewController, UICollectionVi
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
-        print("reloading")
         collectionView?.reloadData()
         postInDistanceOrder = self.postsSortedInDistanceOrder(posts: DummyData.existingPosts)
     }
