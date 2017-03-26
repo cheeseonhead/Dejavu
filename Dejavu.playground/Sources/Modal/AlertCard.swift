@@ -24,6 +24,7 @@ class AlertCard: CardView
     var thumbNailView = ThumbNailView()
     var titleLabel = UILabel()
     var dateLabel = UILabel()
+    var contentLabel = UILabel()
     
     required init(with post:Post)
     {
@@ -35,6 +36,7 @@ class AlertCard: CardView
         setupThumbNail()
         setupTitleLabel()
         setupDateLabel()
+        setupContentLabel()
     }
     
     func setupSelf()
@@ -113,6 +115,23 @@ class AlertCard: CardView
         let constraints = [
             NSLayoutConstraint(item: dateLabel, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: dateLabel, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1.0, constant: Style.titleToDate)
+        ]
+        
+        addConstraints(constraints)
+    }
+    
+    func setupContentLabel()
+    {
+        contentLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        contentLabel.numberOfLines = 3
+        contentLabel.text = post.description
+        addSubview(contentLabel)
+        
+        let constraints = [
+            NSLayoutConstraint(item: contentLabel, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: Style.leftPadding),
+            NSLayoutConstraint(item: contentLabel, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: -Style.leftPadding),
+            NSLayoutConstraint(item: contentLabel, attribute: .top, relatedBy: .equal, toItem: dateLabel, attribute: .bottom, multiplier: 1.0, constant: Style.descToContent)
         ]
         
         addConstraints(constraints)
