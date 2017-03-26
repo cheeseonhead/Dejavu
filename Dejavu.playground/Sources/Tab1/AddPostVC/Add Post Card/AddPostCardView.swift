@@ -99,9 +99,12 @@ extension AddPostCardView
         contentSectionLabel.text = "Describe the Dejavu:"
         contentSectionLabel.translatesAutoresizingMaskIntoConstraints = false
         contentSectionLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
+        contentSectionLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        contentSectionLabel.textColor = AppStyle.TabBarTintColor
         addSubview(contentSectionLabel)
         
         contentField.translatesAutoresizingMaskIntoConstraints = false
+        contentField.font = UIFont.preferredFont(forTextStyle: .body)
         contentField.layer.cornerRadius = Style.cornerRadius
         contentField.layer.borderWidth = Style.borderWidth
         contentField.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1).cgColor
