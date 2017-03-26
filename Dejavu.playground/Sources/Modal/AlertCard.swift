@@ -7,7 +7,7 @@ class AlertCard: CardView
         static let blurImageHeight: CGFloat = 100
         static let thumbNailTopPadding: CGFloat = 20
         static let thumbNailSize: CGFloat = 100
-        static let thumbToTitle: CGFloat = 20
+        static let thumbToTitle: CGFloat = 10
         static let titleToDate: CGFloat = 5
         static let sectionSpacing: CGFloat = 10
         static let leftPadding: CGFloat = 20
@@ -22,6 +22,8 @@ class AlertCard: CardView
     
     var blurImage = BlurImage()
     var thumbNailView = ThumbNailView()
+    var titleLabel = UILabel()
+    var dateLabel = UILabel()
     
     required init(with post:Post)
     {
@@ -31,6 +33,8 @@ class AlertCard: CardView
         setupSelf()
         setupBlurImage()
         setupThumbNail()
+        setupTitleLabel()
+        setupDateLabel()
     }
     
     func setupSelf()
@@ -78,6 +82,37 @@ class AlertCard: CardView
             NSLayoutConstraint(item: thumbNailView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: Style.thumbNailTopPadding),
             NSLayoutConstraint(item: thumbNailView, attribute: .width, relatedBy: .equal, toItem: thumbNailView, attribute: .height, multiplier: 1.0, constant: 0),
             NSLayoutConstraint(item: thumbNailView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: Style.thumbNailSize)
+        ]
+        
+        addConstraints(constraints)
+    }
+    
+    func setupTitleLabel()
+    {
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.font = UIFont.preferredFont(forTextStyle: .title1)
+        titleLabel.text = post.title
+        addSubview(titleLabel)
+        
+        let constraints = [
+            NSLayoutConstraint(item: titleLabel, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal, toItem: thumbNailView, attribute: .bottom, multiplier: 1.0, constant: Style.thumbToTitle)
+        ]
+        
+        addConstraints(constraints)
+    }
+    
+    func setupDateLabel()
+    {
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        dateLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
+        dateLabel.textColor = #colorLiteral(red: 0.6078431373, green: 0.6392156863, blue: 0.6745098039, alpha: 1)
+        dateLabel.text = Post.dateFormatter.string(from: post.date)
+        addSubview(dateLabel)
+        
+        let constraints = [
+            NSLayoutConstraint(item: dateLabel, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0),
+            NSLayoutConstraint(item: dateLabel, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1.0, constant: Style.titleToDate)
         ]
         
         addConstraints(constraints)
