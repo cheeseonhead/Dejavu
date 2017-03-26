@@ -17,7 +17,7 @@ import PlaygroundSupport
  
  You can try changing the current location to any of the preset ones, or you can change it to a custom `CLLocationCoordinate2D` coordinate.
  */
-Coordinates.CurrentLocation = Coordinates.WesleyGHS
+Coordinates.CurrentLocation = Coordinates.ApplePark
 /*:
  Available Locations:
  - `InfiniteLoop1`: The Apple Infinite Loop

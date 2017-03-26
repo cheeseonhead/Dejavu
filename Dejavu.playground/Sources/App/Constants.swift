@@ -50,7 +50,7 @@ public struct Coordinates
 
 func offSetLittle(orig: CLLocationCoordinate2D) -> CLLocationCoordinate2D
 {
-    return CLLocationCoordinate2D(latitude: orig.latitude + 0.00003, longitude: orig.longitude + 0.00003)
+    return CLLocationCoordinate2D(latitude: orig.latitude + 0.0001, longitude: orig.longitude + 0.0001)
 }
 
 struct DummyData
