@@ -65,7 +65,6 @@ class CardScrollViewWrapperView: UIView
     override func layoutSubviews()
     {
         super.layoutSubviews()
-        print(contentView)
     }
 }
 

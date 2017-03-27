@@ -11,7 +11,6 @@ class AddPostViewController: UIViewController
         navigationItem.title = "Add Post"
         view.backgroundColor = UIColor.cyan
         
-        print(navigationItem)
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonPressed))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonPressed))
         
