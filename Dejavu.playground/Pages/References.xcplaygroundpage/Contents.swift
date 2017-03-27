@@ -17,5 +17,9 @@
  
  
  - callout(Apple Developer Team): Thanks to Apple for being so dedicated to creating the best language, and providing all these tools for us to use. Thanks for loving developers!
+ 
+ 
+ - callout(Pictures):
+    - Cafetaria: [Page](http://www.seeds4thesoul.com/2015/08/17/august-17-2015-cafeteria-christianity/)
  */
  
