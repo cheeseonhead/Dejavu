@@ -28,7 +28,7 @@ Coordinates.CurrentLocation = Coordinates.ApplePark
  - `WesleyGHS`: An all girl high school in Taiwan
  
  ****
- When you are ready to add an entry, click [Next](@next)
+ When you are ready to see how the app asks you about a **Déjà vu**, click [Next](@next)
  ****
  [Table of Contents](TableOfContents) | [Previous](@previous) | [Next](@next)
  */
