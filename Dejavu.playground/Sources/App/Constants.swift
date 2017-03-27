@@ -35,6 +35,7 @@ enum ImageName: String
     case rightInCircle = "rightInCircle.png"
     case applePark = "appleParkInside.jpg"
     case cafetaria = "cafe.jpg"
+    case bus = "bus.jpg"
 }
 
 public struct Coordinates
@@ -61,6 +62,8 @@ struct DummyData
         
         Post(title: "Yelling Man", description: "Walking from one session to another. There was this man wearing glasses, and a notebook in his left hand walking down in my direction. He seems to be in a hurry. He wanted to check time, so he took out his phone. That moment I knew I've seen this before, and like I predicted, he stomped his foot in rage and yelled, \"I'm late again!\". I've never seen this man before.",date: Post.dateFormatter.date(from: "2016-06-09 12:29")!, image: UIImage(named: ImageName.applePark.rawValue), location: offSetLittle(orig: Coordinates.ApplePark)),
         
-        Post(title: "Mutual Deja Vu", description: "I was a waiter at the cafetaria. When I was serving a customer, I asked what he wanted. Then a sudden feeling of Deja vu happened. I instantly said what I thought the customer would say. And to our surprise, we jinxed. Then the customer said he had a feeling this happened before, and so did I. It was very scary.",date: Post.dateFormatter.date(from: "2015-03-25 18:56")!, image: UIImage(named: ImageName.cafetaria.rawValue), location: offSetLittle(orig: Coordinates.InfiniteLoop3))
+        Post(title: "Mutual Deja Vu", description: "I was a waiter at the cafetaria. When I was serving a customer, I asked what he wanted. Then a sudden feeling of Deja vu happened. I instantly said what I thought the customer would say. And to our surprise, we jinxed. Then the customer said he had a feeling this happened before, and so did I. It was very scary.",date: Post.dateFormatter.date(from: "2015-03-25 18:56")!, image: UIImage(named: ImageName.cafetaria.rawValue), location: offSetLittle(orig: Coordinates.InfiniteLoop3)),
+        
+        Post(title: "Bus", description: "I sat on the first row of the bus, so I see and hear everything the driver has to say to each of the passengers getting on. Then one passenger beeped his card, it didn't go through. I looked at the passenger's face, he was frowning, then I heard the driver saying, \"It's ok\". He let the passenger on. I moved to the back, because it was creeping me out.",date: Post.dateFormatter.date(from: "2016-12-25 13:21")!, image: UIImage(named: ImageName.bus.rawValue), location: offSetLittle(orig: Coordinates.InfiniteLoop1))
     ]
 }
