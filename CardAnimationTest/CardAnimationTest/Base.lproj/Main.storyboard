@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CardAnimationTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t9d-lw-Iw0">
+                                <rect key="frame" x="26" y="558" width="322" height="74"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BTe-UP-c3B">
+                                        <rect key="frame" x="16" y="8" width="290" height="58"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jac-LI-lTs">
+                                                <rect key="frame" x="114.5" y="19" width="61" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.99948126077651978" green="0.55967867374420166" blue="0.22307494282722473" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="Jac-LI-lTs" firstAttribute="centerY" secondItem="BTe-UP-c3B" secondAttribute="centerY" id="5fc-81-wfP"/>
+                                            <constraint firstItem="Jac-LI-lTs" firstAttribute="centerX" secondItem="BTe-UP-c3B" secondAttribute="centerX" id="Nnq-U2-P14"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.44410377740859985" green="0.99099951982498169" blue="0.41942775249481201" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="BTe-UP-c3B" firstAttribute="leading" secondItem="t9d-lw-Iw0" secondAttribute="leading" constant="16" id="X0j-31-P6W"/>
+                                    <constraint firstAttribute="trailing" secondItem="BTe-UP-c3B" secondAttribute="trailing" constant="16" id="ewr-KN-rgs"/>
+                                    <constraint firstItem="BTe-UP-c3B" firstAttribute="top" secondItem="t9d-lw-Iw0" secondAttribute="top" constant="8" id="mFj-X9-5Ns"/>
+                                    <constraint firstAttribute="bottom" secondItem="BTe-UP-c3B" secondAttribute="bottom" constant="8" id="xb4-GM-UqC"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Och-Ol-5cF">
+                                <rect key="frame" x="164" y="318.5" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.68289782325078452" green="0.86408412992761285" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="t9d-lw-Iw0" secondAttribute="trailing" constant="11" id="3hj-1x-Mad"/>
+                            <constraint firstItem="Och-Ol-5cF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Xii-tl-kzO"/>
+                            <constraint firstItem="t9d-lw-Iw0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="YyU-sh-HAJ"/>
+                            <constraint firstItem="Och-Ol-5cF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="dnN-M1-jnp"/>
+                            <constraint firstItem="t9d-lw-Iw0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="538" id="ikP-gl-uhv"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="t9d-lw-Iw0" secondAttribute="bottom" constant="35" id="x9o-gH-dvh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="yellow" destination="t9d-lw-Iw0" id="n4F-LL-tUb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-252" y="71.514242878560722"/>
+        </scene>
+        <!--Embedded View Controller-->
+        <scene sceneID="d6F-2V-e6K">
+            <objects>
+                <viewController storyboardIdentifier="Embedded" useStoryboardIdentifierAsRestorationIdentifier="YES" id="E65-gr-8m7" customClass="EmbeddedViewController" customModule="CardAnimationTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9oE-Km-1Kd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vzt-VR-szT">
+                                <rect key="frame" x="16" y="8" width="343" height="651"/>
+                                <color key="backgroundColor" red="1" green="0.55963510463783239" blue="0.22266609777840696" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ycv-9k-0HV">
+                                <rect key="frame" x="157" y="323" width="61" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.44262350895759262" green="1" blue="0.4199492485778219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Vzt-VR-szT" firstAttribute="leading" secondItem="9oE-Km-1Kd" secondAttribute="leadingMargin" id="Agx-sX-E9D"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Vzt-VR-szT" secondAttribute="bottom" constant="8" id="Hxz-0F-PCz"/>
+                            <constraint firstItem="Ycv-9k-0HV" firstAttribute="centerX" secondItem="9oE-Km-1Kd" secondAttribute="centerX" id="R85-9f-8U1"/>
+                            <constraint firstItem="Vzt-VR-szT" firstAttribute="top" secondItem="9oE-Km-1Kd" secondAttribute="topMargin" constant="8" id="glg-vZ-vaK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Vzt-VR-szT" secondAttribute="trailing" id="k4e-IH-6vk"/>
+                            <constraint firstItem="Ycv-9k-0HV" firstAttribute="centerY" secondItem="9oE-Km-1Kd" secondAttribute="centerY" id="xU1-Xr-CV7"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XjP-RJ-iqD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="705" y="90"/>
+        </scene>
+    </scenes>
+</document>
