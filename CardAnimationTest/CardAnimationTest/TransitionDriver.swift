@@ -68,24 +68,12 @@ extension TransitionDriver {
     @objc func updateInteraction(_ pan: UIPanGestureRecognizer) {
         switch pan.state {
         case .began, .changed:
-            // Ask the gesture recognizer for it's translation
             let translation = pan.translation(in: transitionContext.containerView)
             
-            // Calculate the percent complete
-//            let percentComplete = transitionAnimator.fractionComplete + progressStepFor(translation: translation)
             let percentComplete = translation.y / -200
             
-            // Update the transition animator's fractionCompete to scrub it's animations
             transitionAnimator.fractionComplete = percentComplete
-            
-            // Inform the transition context of the updated percent complete
             transitionContext.updateInteractiveTransition(percentComplete)
-            
-            // Update each transition item for the
-//            updateItemsForInteractive(translation: translation)
-            
-            // Reset the gestures translation
-//            fromGesture.setTranslation(CGPoint.zero, in: transitionContext.containerView)
         case .ended, .cancelled:
             transitionContext.finishInteractiveTransition()
             
@@ -95,11 +83,6 @@ extension TransitionDriver {
             else {
                 transitionAnimator.continueAnimation(withTimingParameters: nil, durationFactor: 1)
             }
-            
-            print(transitionAnimator.state)
-            break
-            // End the interactive phase of the transition
-//            endInteraction()
         default: break
         }
     }
