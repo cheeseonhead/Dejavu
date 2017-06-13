@@ -25,11 +25,12 @@ class TransitionDriver {
         let fromView = context.view(forKey: .from)
         let toView = context.view(forKey: .to)!
         
-        toView.alpha = 0
+        let translate = CGAffineTransform(translationX: 0, y: transitionContext.containerView.frame.size.height)
+        toView.transform = translate
         context.containerView.addSubview(toView)
         
         transitionAnimator = UIViewPropertyAnimator(duration: 0.8, curve: .linear, animations: {
-            toView.alpha = 1.0
+            toView.transform = .identity
         })
         
         transitionAnimator.addCompletion { [unowned self] (position) in
@@ -73,9 +74,9 @@ extension TransitionDriver {
             let percentComplete = translation.y / -200
             
             transitionAnimator.fractionComplete = percentComplete
-            transitionContext.updateInteractiveTransition(percentComplete)
+//            transitionContext.updateInteractiveTransition(percentComplete)
         case .ended, .cancelled:
-            transitionContext.finishInteractiveTransition()
+//            transitionContext.finishInteractiveTransition()
             
             if transitionAnimator.state == .inactive {
                 transitionAnimator.startAnimation()

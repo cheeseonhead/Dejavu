@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CardAnimationTest/TransitionDriver.swift"
-            timestampString = "519031067.725707"
+            timestampString = "519051023.95742"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CardAnimationTest/TransitionDriver.swift"
-            timestampString = "519031067.726105"
+            timestampString = "519051023.958039"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "69"
@@ -90,13 +90,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CardAnimationTest/TransitionDriver.swift"
-            timestampString = "519031067.726437"
+            timestampString = "519051023.958405"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "90"
             endingLineNumber = "90"
-            landmarkName = "updateInteraction(_:)"
-            landmarkType = "7">
+            landmarkName = "TransitionDriver"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CardAnimationTest/TransitionDriver.swift"
-            timestampString = "519031067.726777"
+            timestampString = "519051023.95866"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
