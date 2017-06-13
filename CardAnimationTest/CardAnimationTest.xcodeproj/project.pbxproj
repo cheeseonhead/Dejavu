@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		564B118E1EEF46DD003282E3 /* TransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564B118D1EEF46DD003282E3 /* TransitionController.swift */; };
 		56763D4D1EDDD69C0032A8D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56763D4C1EDDD69C0032A8D1 /* AppDelegate.swift */; };
 		56763D4F1EDDD69C0032A8D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56763D4E1EDDD69C0032A8D1 /* ViewController.swift */; };
 		56763D521EDDD69C0032A8D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56763D501EDDD69C0032A8D1 /* Main.storyboard */; };
 		56763D541EDDD69C0032A8D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56763D531EDDD69C0032A8D1 /* Assets.xcassets */; };
 		56763D571EDDD69C0032A8D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56763D551EDDD69C0032A8D1 /* LaunchScreen.storyboard */; };
 		56763D621EDDD69C0032A8D1 /* CardAnimationTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56763D611EDDD69C0032A8D1 /* CardAnimationTestTests.swift */; };
+		56EF10C41EEF4BFB00EC2AF3 /* TransitionDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EF10C31EEF4BFB00EC2AF3 /* TransitionDriver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		564B118D1EEF46DD003282E3 /* TransitionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionController.swift; sourceTree = "<group>"; };
 		56763D491EDDD69C0032A8D1 /* CardAnimationTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardAnimationTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56763D4C1EDDD69C0032A8D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56763D4E1EDDD69C0032A8D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +39,7 @@
 		56763D5D1EDDD69C0032A8D1 /* CardAnimationTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardAnimationTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56763D611EDDD69C0032A8D1 /* CardAnimationTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardAnimationTestTests.swift; sourceTree = "<group>"; };
 		56763D631EDDD69C0032A8D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56EF10C31EEF4BFB00EC2AF3 /* TransitionDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionDriver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,8 @@
 			isa = PBXGroup;
 			children = (
 				56763D4C1EDDD69C0032A8D1 /* AppDelegate.swift */,
+				564B118D1EEF46DD003282E3 /* TransitionController.swift */,
+				56EF10C31EEF4BFB00EC2AF3 /* TransitionDriver.swift */,
 				56763D4E1EDDD69C0032A8D1 /* ViewController.swift */,
 				56763D501EDDD69C0032A8D1 /* Main.storyboard */,
 				56763D531EDDD69C0032A8D1 /* Assets.xcassets */,
@@ -201,6 +207,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56EF10C41EEF4BFB00EC2AF3 /* TransitionDriver.swift in Sources */,
+				564B118E1EEF46DD003282E3 /* TransitionController.swift in Sources */,
 				56763D4F1EDDD69C0032A8D1 /* ViewController.swift in Sources */,
 				56763D4D1EDDD69C0032A8D1 /* AppDelegate.swift in Sources */,
 			);
@@ -412,6 +420,7 @@
 				56763D681EDDD69C0032A8D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		56763D691EDDD69C0032A8D1 /* Build configuration list for PBXNativeTarget "CardAnimationTestTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +429,7 @@
 				56763D6B1EDDD69C0032A8D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
