@@ -27,12 +27,19 @@ class TransitionController: NSObject {
     }
     
     func configurePanGestureRecognizer() {
+        panGestureRecognizer.delegate = self
         panGestureRecognizer.maximumNumberOfTouches = 1
         panGestureRecognizer.addTarget(self, action: #selector(initiateTransitionInteractively(_:)))
     }
     
     @objc func initiateTransitionInteractively(_ panGesture: UIPanGestureRecognizer) {
         initiallyInteractive = false
+    }
+}
+
+extension TransitionController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }
 

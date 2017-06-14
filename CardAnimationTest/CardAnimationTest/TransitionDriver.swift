@@ -8,17 +8,19 @@
 
 import UIKit
 
-class TransitionDriver {
+class TransitionDriver: NSObject {
     
     var transitionAnimator: UIViewPropertyAnimator!
     var transitionContext: UIViewControllerContextTransitioning
     
     private let pan: UIPanGestureRecognizer
     fileprivate var interruptPan: UIPanGestureRecognizer!
+    fileprivate var interruptPress: UILongPressGestureRecognizer!
     
     init(context: UIViewControllerContextTransitioning, panGestureRecognizer panGesture: UIPanGestureRecognizer) {
         self.transitionContext = context
         self.pan = panGesture
+        super.init()
         
         self.pan.addTarget(self, action: #selector(updateInteraction(_:)))
         
@@ -28,6 +30,7 @@ class TransitionDriver {
         position(toView)
         setupTransitionAnimator(with: toView)
         interruptPan = addInterruptPanGesture(to: toView)
+        interruptPress = addInterruptPressGesture(to: toView)
         
         if !context.isInteractive {
             transitionAnimator.startAnimation()
@@ -52,14 +55,32 @@ extension TransitionDriver {
             let completed = (position == .end)
             self.transitionContext.completeTransition(completed)
             toView.removeGestureRecognizer(self.interruptPan!)
+            toView.removeGestureRecognizer(self.interruptPress)
         }
     }
     
     func addInterruptPanGesture(to toView:UIView) -> UIPanGestureRecognizer {
         let interPan = UIPanGestureRecognizer(target: self, action: #selector(updateInteraction(_:)))
+        interPan.delegate = self
         toView.addGestureRecognizer(interPan)
         
         return interPan
+    }
+    
+    func addInterruptPressGesture(to toView:UIView) -> UILongPressGestureRecognizer {
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handle(press:)))
+        longPress.delegate = self
+        longPress.minimumPressDuration = 0.0
+        toView.addGestureRecognizer(longPress)
+        
+        return longPress
+    }
+}
+
+// MARK: - Gesture Delegate
+extension TransitionDriver: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }
 
@@ -88,6 +109,18 @@ extension TransitionDriver {
             else {
                 let percentRemaining = 1 - percentComplete
                 transitionAnimator.continueAnimation(withTimingParameters: nil, durationFactor: percentRemaining)
+            }
+        default: break
+        }
+    }
+    
+    @objc func handle(press: UILongPressGestureRecognizer) {
+        switch press.state {
+        case .began:
+            switch transitionAnimator.state {
+            case .active:
+                transitionAnimator.pauseAnimation()
+            default: break
             }
         default: break
         }
