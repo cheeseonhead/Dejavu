@@ -34,50 +34,36 @@ class TransitionDriver {
         })
         
         transitionAnimator.addCompletion { [unowned self] (position) in
-            self.transitionContext.completeTransition(true)
+            let completed = (position == .end)
+            self.transitionContext.completeTransition(completed)
         }
+        
+        let interPan = UIPanGestureRecognizer(target: self, action: #selector(updateInteraction(_:)))
+        toView.addGestureRecognizer(interPan)
         
         if !context.isInteractive {
             transitionAnimator.startAnimation()
         }
-//        setupTransitionAnimator({
-//            <#code#>
-//        }, transitionCompletion: <#T##(UIViewAnimatingPosition) -> ()#>)
     }
 }
-
-// MARK: - Setup
-extension TransitionDriver {
-    func setupTransitionAnimator(_ transitionAnimations: @escaping ()->(), transitionCompletion: @escaping (UIViewAnimatingPosition)->()) {
-        // The duration of the transition, if uninterrupted
-        let transitionDuration = 0.8
-        
-        // Create a UIViewPropertyAnimator that lives the lifetime of the transition
-        transitionAnimator = UIViewPropertyAnimator(duration: transitionDuration, curve: .easeOut, animations: transitionAnimations)
-        
-        transitionAnimator.addCompletion { [unowned self] (position) in
-            // Call the supplied completion
-            transitionCompletion(position)
-            
-            // Inform the transition context that the transition has completed
-            let completed = (position == .end)
-            self.transitionContext.completeTransition(completed)
-        }
-    }
-}
-
 
 // MARK: - Animation Handling
 extension TransitionDriver {
     @objc func updateInteraction(_ pan: UIPanGestureRecognizer) {
         switch pan.state {
         case .began, .changed:
+            switch transitionAnimator.state {
+            case .active:
+                transitionAnimator.pauseAnimation()
+            default: break
+            }
             let translation = pan.translation(in: transitionContext.containerView)
             
-            let percentComplete = translation.y / -200
+            let percentComplete = transitionAnimator.fractionComplete +  translation.y / -200
             
             transitionAnimator.fractionComplete = percentComplete
-//            transitionContext.updateInteractiveTransition(percentComplete)
+            
+            pan.setTranslation(CGPoint.zero, in: pan.view)
         case .ended, .cancelled:
 //            transitionContext.finishInteractiveTransition()
             
