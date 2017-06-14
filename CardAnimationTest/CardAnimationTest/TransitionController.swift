@@ -32,7 +32,7 @@ class TransitionController: NSObject {
     }
     
     @objc func initiateTransitionInteractively(_ panGesture: UIPanGestureRecognizer) {
-        
+        initiallyInteractive = false
     }
 }
 
@@ -53,6 +53,10 @@ extension TransitionController: UIViewControllerAnimatedTransitioning {
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {}
+    
+    func interruptibleAnimator(using transitionContext: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating {
+        return (transitionDriver?.transitionAnimator)!
+    }
 }
 
 extension TransitionController: UIViewControllerInteractiveTransitioning {
@@ -61,6 +65,6 @@ extension TransitionController: UIViewControllerInteractiveTransitioning {
     }
     
     var wantsInteractiveStart: Bool {
-        return true
+        return initiallyInteractive
     }
 }

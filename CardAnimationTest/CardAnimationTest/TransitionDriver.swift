@@ -37,6 +37,9 @@ class TransitionDriver {
             self.transitionContext.completeTransition(true)
         }
         
+        if !context.isInteractive {
+            transitionAnimator.startAnimation()
+        }
 //        setupTransitionAnimator({
 //            <#code#>
 //        }, transitionCompletion: <#T##(UIViewAnimatingPosition) -> ()#>)

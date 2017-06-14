@@ -11,7 +11,6 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var yellow: UIView!
-    var hasStarted = false
     
     var transitionController: TransitionController!
     
@@ -22,24 +21,35 @@ class ViewController: UIViewController {
         expandPanGesture.addTarget(self, action: #selector(handlePanGesture(pan:)))
         view.addGestureRecognizer(expandPanGesture)
         
+        let tapGesture = UITapGestureRecognizer()
+        tapGesture.addTarget(self, action: #selector(handleTap(tap:)))
+        view.addGestureRecognizer(tapGesture)
+        
         transitionController = TransitionController(presentingViewController: self, panGesture: expandPanGesture)
     }
     
     func handlePanGesture(pan: UIPanGestureRecognizer) {
-        let translation = pan.translation(in: pan.view!)
-        
-        let d = translation.y / (-20)
-        
         switch (pan.state) {
         case .began:
-            hasStarted = true
-            let embedded = storyboard!.instantiateViewController(withIdentifier: "Embedded") as! EmbeddedViewController
-            embedded.transitioningDelegate = transitionController
-            embedded.modalPresentationStyle = .custom
-            present(embedded, animated: true, completion: nil)
+            presentVC()
         default:
             break
         }
+    }
+    
+    func handleTap(tap: UITapGestureRecognizer) {
+        switch tap.state {
+        case .ended, .cancelled:
+            presentVC()
+        default: break
+        }
+    }
+    
+    func presentVC() {
+        let embedded = storyboard!.instantiateViewController(withIdentifier: "Embedded") as! EmbeddedViewController
+        embedded.transitioningDelegate = transitionController
+        embedded.modalPresentationStyle = .custom
+        present(embedded, animated: true, completion: nil)
     }
 }
 
